@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f4f0e6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#151817" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" href="data:," />
+  <title>China-Reiseplan · Peking & Hongkong</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f0e6;
+      --paper: #fffcf5;
+      --paper-2: #ebe5d8;
+      --ink: #1d2523;
+      --muted: #59635f;
+      --line: #d3cbbb;
+      --red: #a83232;
+      --red-soft: #f2ded8;
+      --jade: #1f6a5c;
+      --jade-soft: #dce9e1;
+      --gold: #a1742c;
+      --gold-soft: #efe2bf;
+      --hk: #175d84;
+      --hk-soft: #dbe8ef;
+      --shadow: 0 12px 38px rgba(30, 42, 38, .10);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 11px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #151817;
+        --paper: #202522;
+        --paper-2: #2b312e;
+        --ink: #f3f0e7;
+        --muted: #b5bdb8;
+        --line: #414945;
+        --red: #e17468;
+        --red-soft: #432c2a;
+        --jade: #72c7ad;
+        --jade-soft: #243c35;
+        --gold: #deb66d;
+        --gold-soft: #453b28;
+        --hk: #83c9ee;
+        --hk-soft: #263c47;
+        --shadow: 0 14px 42px rgba(0, 0, 0, .28);
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      background:
+        radial-gradient(circle at 12% 3%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 28rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .shell { width: min(1120px, 100%); margin: 0 auto; padding: 18px 20px 64px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 62px);
+      background: #152b27;
+      color: #fffaf0;
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(110deg, rgba(6,20,18,.96) 0%, rgba(16,50,44,.9) 52%, rgba(28,88,76,.68) 100%),
+        repeating-linear-gradient(30deg, rgba(255,255,255,.03) 0 1px, transparent 1px 24px);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      right: -190px;
+      top: -190px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 54px rgba(255,255,255,.035), 0 0 0 108px rgba(255,255,255,.025);
+      z-index: -1;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 42px; align-items: end; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 17px;
+      font-size: .78rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #f2cf86;
+      font-weight: 750;
+    }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: currentColor; }
+    h1, h2, h3 { margin: 0; line-height: 1.08; }
+    h1 {
+      max-width: 620px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 8vw, 6.7rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+    }
+    .hero-copy { margin: 20px 0 25px; color: #dbe8e1; font-size: clamp(1rem, 2vw, 1.18rem); max-width: 540px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 10px; }
+    .fact {
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+      font-size: .84rem;
+      white-space: nowrap;
+    }
+    .route-card {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      background: rgba(5,19,16,.28);
+    }
+    .route-title { display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom: 18px; }
+    .route-title strong { font-size: 1rem; }
+    .route-title span { color: #b9cdc4; font-size: .78rem; }
+    .route-svg { width: 100%; height: auto; overflow: visible; }
+    .route-line { fill: none; stroke: #f0cc7b; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 7 8; }
+    .route-ring { fill: #152b27; stroke: #fff6e5; stroke-width: 3; }
+    .route-label { fill: #fffaf0; font-size: 12px; font-family: "Avenir Next", Avenir, sans-serif; font-weight: 700; }
+    .route-date { fill: #b9cdc4; font-size: 9px; font-family: "Avenir Next", Avenir, sans-serif; }
+    .plane { fill: #f0cc7b; }
+    .quicknav {
+      position: sticky;
+      top: 8px;
+      z-index: 20;
+      display: flex;
+      gap: 7px;
+      margin: 14px auto 42px;
+      padding: 7px;
+      width: max-content;
+      max-width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      box-shadow: 0 8px 24px rgba(28,37,34,.1);
+      backdrop-filter: blur(12px);
+    }
+    .quicknav a {
+      padding: 8px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .quicknav a:hover, .quicknav a:focus-visible { color: var(--ink); background: var(--paper-2); outline: none; }
+    section { margin: 62px 0; scroll-margin-top: 78px; }
+    .section-head { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 22px; align-items: end; margin-bottom: 25px; }
+    .section-head h2 { font-family: Georgia, serif; font-size: clamp(2.1rem, 5vw, 3.5rem); font-weight: 500; letter-spacing: -.035em; }
+    .section-head p { color: var(--muted); margin: 8px 0 0; max-width: 650px; }
+    .section-num { color: var(--red); font-family: Georgia, serif; font-size: 1.2rem; }
+    .summary-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+    .panel { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 6px 22px rgba(26,35,32,.055); }
+    .flight-panel { padding: 26px; border-radius: var(--radius-lg) var(--radius-lg) 10px var(--radius-lg); }
+    .panel-top { display:flex; justify-content:space-between; gap:16px; align-items:center; margin-bottom: 24px; }
+    .panel-top h3 { font-size: 1.22rem; }
+    .price { font-weight: 800; color: var(--red); white-space: nowrap; }
+    .flight-list { display: grid; gap: 17px; }
+    .flight {
+      display: grid;
+      grid-template-columns: 76px minmax(0,1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+    }
+    .flight:first-child { border-top: 0; padding-top: 0; }
+    .flight-date { font-weight: 800; font-size: .82rem; }
+    .flight-route strong { display:block; font-size:.98rem; }
+    .flight-route span { color: var(--muted); font-size: .79rem; }
+    .flight-no { color: var(--muted); font-size: .75rem; padding: 5px 8px; background: var(--paper-2); border-radius: 7px; }
+    .hotel-stack { display:grid; gap: 16px; }
+    .hotel { position: relative; overflow: hidden; padding: 25px; border-radius: 10px var(--radius-lg) var(--radius-lg) var(--radius-lg); }
+    .hotel.beijing { border-top: 4px solid var(--red); }
+    .hotel.hk { border-top: 4px solid var(--hk); }
+    .hotel-city { color: var(--muted); font-size:.75rem; font-weight: 800; text-transform:uppercase; letter-spacing:.11em; }
+    .hotel h3 { margin: 7px 0 11px; font-size:1.15rem; }
+    .hotel-meta { display:flex; flex-wrap:wrap; gap:7px; color:var(--muted); font-size:.78rem; }
+    .hotel-meta span { padding: 5px 8px; background: var(--paper-2); border-radius: 7px; }
+    .hotel-total { margin-top: 16px; font-family:Georgia,serif; font-size:1.35rem; }
+    .timeline-tools { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+    .filter-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip, .text-btn {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 750;
+    }
+    .chip:hover, .chip:focus-visible, .text-btn:hover, .text-btn:focus-visible { border-color: var(--ink); outline:none; }
+    .chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+    .timeline::before { content:""; position:absolute; top:0; bottom:0; left: 34px; width:1px; background: var(--line); }
+    .day { position:relative; display:grid; grid-template-columns:68px minmax(0,1fr); gap:17px; margin-bottom:13px; }
+    .day.hidden { display:none; }
+    .day-marker { position:relative; z-index:2; width:68px; padding-top:16px; text-align:center; }
+    .day-number {
+      display:grid; place-items:center; width:46px; height:46px; margin:0 auto;
+      border-radius:50%; background:var(--paper); border:2px solid var(--line); font-family:Georgia,serif; font-size:1.2rem;
+    }
+    .day[data-city="beijing"] .day-number { border-color:var(--red); color:var(--red); }
+    .day[data-city="hongkong"] .day-number { border-color:var(--hk); color:var(--hk); }
+    .day-card { border:1px solid var(--line); background:var(--paper); border-radius: 8px var(--radius-md) var(--radius-md) var(--radius-md); overflow:hidden; }
+    .day-card button {
+      width:100%; border:0; background:transparent; padding:18px 20px; cursor:pointer; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:15px; text-align:left; align-items:center;
+    }
+    .day-card button:hover { background: color-mix(in srgb, var(--paper-2) 52%, transparent); }
+    .day-card button:focus-visible { outline: 2px solid var(--jade); outline-offset:-3px; }
+    .day-date { color:var(--muted); font-size:.75rem; font-weight:750; text-transform:uppercase; letter-spacing:.08em; }
+    .day-title { margin-top:3px; font-size:1.02rem; font-weight:800; }
+    .day-toggle { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--paper-2); transition:transform .2s ease; }
+    .day-card button[aria-expanded="true"] .day-toggle { transform:rotate(45deg); }
+    .day-content { padding: 0 20px 20px; }
+    .day-content[hidden] { display:none; }
+    .day-content p { margin:0; color:var(--muted); }
+    .day-content strong { color:var(--ink); }
+    .cost-line { margin-top:13px !important; display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:13px; border-top:1px dashed var(--line); font-size:.84rem; }
+    .cost-line b { color:var(--red); }
+    .option-tabs { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:15px; }
+    .option-tabs button { display:block; padding:9px; border:1px solid var(--line); border-radius:9px; background:var(--paper-2); text-align:center; font-size:.75rem; }
+    .option-tabs button.active { background:var(--jade); color:white; border-color:var(--jade); }
+    .option-detail { margin-top:12px !important; padding:12px; border-radius:9px; background:var(--jade-soft); color:var(--ink) !important; }
+    .budget-wrap { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(270px,.85fr); gap:18px; }
+    .budget-chart, .budget-total { padding:27px; border-radius:var(--radius-lg); }
+    .bar-list { display:grid; gap:18px; }
+    .bar-label { display:flex; justify-content:space-between; gap:16px; font-size:.84rem; margin-bottom:7px; }
+    .bar-label span:last-child { color:var(--muted); }
+    .bar-track { height:10px; border-radius:10px; background:var(--paper-2); overflow:hidden; }
+    .bar-fill { height:100%; border-radius:10px; background:var(--jade); transform-origin:left; animation:grow .8s ease-out both; }
+    .bar-row:nth-child(2) .bar-fill { background:var(--red); animation-delay:.08s; }
+    .bar-row:nth-child(3) .bar-fill { background:var(--gold); animation-delay:.16s; }
+    .bar-row:nth-child(4) .bar-fill { background:var(--hk); animation-delay:.24s; }
+    .bar-row:nth-child(5) .bar-fill { background:#6b6f85; animation-delay:.32s; }
+    @keyframes grow { from { transform:scaleX(0); } }
+    .budget-total { background:var(--ink); color:var(--bg); display:flex; flex-direction:column; justify-content:space-between; }
+    .budget-total small { opacity:.72; }
+    .big-total { font-family:Georgia,serif; font-size:clamp(3rem,7vw,5.1rem); line-height:1; margin:18px 0 11px; letter-spacing:-.05em; }
+    .budget-range { display:inline-flex; padding:7px 10px; border:1px solid color-mix(in srgb, var(--bg) 30%, transparent); border-radius:999px; font-size:.78rem; width:max-content; }
+    .budget-note { margin-top:24px; font-size:.82rem; opacity:.74; }
+    .tips-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
+    .tip { padding:21px; background:var(--paper); border-top:3px solid var(--jade); border-radius: 6px var(--radius-md) var(--radius-md); box-shadow:0 4px 16px rgba(25,35,31,.05); }
+    .tip:nth-child(2), .tip:nth-child(5) { border-color:var(--red); }
+    .tip:nth-child(3), .tip:nth-child(6) { border-color:var(--gold); }
+    .tip-icon { width:35px; height:35px; display:grid; place-items:center; border-radius:50%; background:var(--jade-soft); color:var(--jade); margin-bottom:14px; font-weight:900; }
+    .tip h3 { font-size:.98rem; margin-bottom:7px; }
+    .tip p { color:var(--muted); font-size:.84rem; margin:0; }
+    .check-panel { overflow:hidden; border-radius:var(--radius-lg); }
+    .check-head { display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; padding:26px; background:var(--jade); color:white; }
+    .check-head h2 { font-family:Georgia,serif; font-size:clamp(2rem,5vw,3rem); font-weight:500; }
+    .check-head p { margin:5px 0 0; opacity:.78; font-size:.82rem; }
+    .progress-ring { position:relative; width:76px; height:76px; display:grid; place-items:center; }
+    .progress-ring svg { position:absolute; inset:0; transform:rotate(-90deg); }
+    .ring-bg { stroke:rgba(255,255,255,.2); }
+    .ring-value { stroke:#fff2cb; stroke-linecap:round; transition:stroke-dashoffset .25s ease; }
+    .progress-ring strong { font-size:.85rem; }
+    .check-list { padding:12px 26px 26px; background:var(--paper); }
+    .check-item { display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:flex-start; padding:15px 0; border-bottom:1px solid var(--line); cursor:pointer; }
+    .check-item:last-child { border-bottom:0; }
+    .check-item input { width:24px; height:24px; margin:1px 0 0; accent-color:var(--jade); cursor:pointer; }
+    .box { display:none; }
+    .check-item input:checked ~ .check-copy { color:var(--muted); text-decoration:line-through; text-decoration-thickness:1px; }
+    .check-item:has(input:focus-visible) { outline:2px solid var(--gold); outline-offset:4px; border-radius:4px; }
+    .check-copy strong { display:block; color:var(--red); }
+    .footer { margin-top:54px; padding:24px 0 calc(10px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); color:var(--muted); font-size:.78rem; display:flex; justify-content:space-between; gap:20px; }
+    .footer b { color:var(--ink); }
+    .sr-only { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+    @media (max-width: 820px) {
+      .hero-grid, .summary-grid, .budget-wrap { grid-template-columns:1fr; }
+      .hero { min-height:0; }
+      .route-card { margin-top:4px; }
+      .tips-grid { grid-template-columns:repeat(2,1fr); }
+      .section-head { grid-template-columns:1fr; }
+      .timeline-tools { justify-content:flex-start; }
+    }
+    @media (max-width: 580px) {
+      .shell { padding: 10px 12px 44px; }
+      .hero { border-radius:25px; padding:28px 20px 23px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.4rem); }
+      .hero-copy { font-size:.94rem; }
+      .route-card { padding:16px 13px; border-radius:18px; }
+      .quicknav { width:100%; justify-content:space-between; margin-bottom:38px; }
+      .quicknav a { padding:7px 8px; font-size:.68rem; }
+      section { margin:48px 0; }
+      .flight-panel, .hotel, .budget-chart, .budget-total { padding:20px; }
+      .flight { grid-template-columns:62px minmax(0,1fr); }
+      .flight-no { grid-column:2; width:max-content; }
+      .timeline::before { left:20px; }
+      .day { grid-template-columns:41px minmax(0,1fr); gap:9px; }
+      .day-marker { width:41px; padding-top:15px; }
+      .day-number { width:36px; height:36px; font-size:1rem; }
+      .day-card button { padding:16px 15px; }
+      .day-content { padding:0 15px 17px; font-size:.9rem; }
+      .option-tabs { grid-template-columns:1fr; }
+      .tips-grid { grid-template-columns:1fr; }
+      .check-head { padding:22px 19px; }
+      .check-list { padding:9px 19px 19px; }
+      .footer { flex-direction:column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">1.–12. November 2026</p>
+          <h1>Peking → Hongkong</h1>
+          <p class="hero-copy">Kaiserpaläste, Große Mauer und fünf Abende am Victoria Harbour – als kompakte 11-Tage-Reise ab München.</p>
+          <div class="hero-facts" aria-label="Reise-Eckdaten">
+            <span class="fact">1 Person</span>
+            <span class="fact">11 Tage</span>
+            <span class="fact">9 Nächte</span>
+            <span class="fact">ca. 1.350–1.500 €</span>
+          </div>
+        </div>
+        <div class="route-card" aria-label="Reiseroute München nach Peking, Hongkong und zurück">
+          <div class="route-title"><strong>Deine Route</strong><span>Air China · 4 Flüge</span></div>
+          <svg class="route-svg" viewBox="0 0 430 210" role="img" aria-label="Stilisierte Route mit vier Flügen: München nach Peking, Peking nach Hongkong, Hongkong zurück nach Peking und Peking nach München">
+            <path class="route-line" d="M48 63 C122 14 194 27 252 62 C302 84 347 115 386 130" />
+            <path class="route-line" d="M386 130 C341 176 289 180 252 154 C190 196 112 158 48 63" opacity=".52" />
+            <circle class="route-ring" cx="48" cy="63" r="8" />
+            <circle class="route-ring" cx="252" cy="62" r="8" />
+            <circle class="route-ring" cx="386" cy="130" r="8" />
+            <circle class="route-ring" cx="252" cy="154" r="6" />
+            <g class="plane" transform="translate(145 31) rotate(15)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
+            <g class="plane" transform="translate(315 93) rotate(39)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
+            <g class="plane" transform="translate(327 154) rotate(145) scale(.8)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
+            <g class="plane" transform="translate(150 169) rotate(202) scale(.8)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
+            <text class="route-label" x="29" y="90">München</text><text class="route-date" x="29" y="104">Start &amp; Ziel</text>
+            <text class="route-label" x="232" y="43">Peking</text><text class="route-date" x="232" y="30">4 Nächte</text>
+            <text class="route-label" x="326" y="119">Hongkong</text><text class="route-date" x="326" y="106">5 Nächte</text>
+            <text class="route-date" x="230" y="175">Umstieg</text>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <nav class="quicknav" aria-label="Schnellnavigation">
+      <a href="#reise">Route</a><a href="#tage">Tage</a><a href="#budget">Budget</a><a href="#tipps">Tipps</a><a href="#checkliste">To-dos</a>
+    </nav>
+
+    <section id="reise">
+      <div class="section-head"><div><span class="section-num">01</span><h2>Reise auf einen Blick</h2><p>Vier Flüge, zwei Unterkünfte – alles in einer durchgehenden Dramaturgie.</p></div></div>
+      <div class="summary-grid">
+        <article class="panel flight-panel">
+          <div class="panel-top"><h3>Flüge · Air China</h3><span class="price">ca. 629 €</span></div>
+          <div class="flight-list">
+            <div class="flight"><div class="flight-date">So, 1.11.</div><div class="flight-route"><strong>München 12:30 → Peking 05:00</strong><span>Ankunft Montag · nonstop</span></div><span class="flight-no">CA962</span></div>
+            <div class="flight"><div class="flight-date">Fr, 6.11.</div><div class="flight-route"><strong>Peking 18:25 → Hongkong 21:50</strong><span>Direktflug</span></div><span class="flight-no">CA107</span></div>
+            <div class="flight"><div class="flight-date">Mi, 11.11.</div><div class="flight-route"><strong>Hongkong 20:20 → Peking 23:55</strong><span>Umstieg in der Nacht</span></div><span class="flight-no">CA116</span></div>
+            <div class="flight"><div class="flight-date">Do, 12.11.</div><div class="flight-route"><strong>Peking 02:55 → München 06:35</strong><span>Ankunft am selben Morgen</span></div><span class="flight-no">CA961</span></div>
+          </div>
+        </article>
+        <div class="hotel-stack">
+          <article class="panel hotel beijing">
+            <div class="hotel-city">Peking · 2.–6.11.</div><h3>Hanting Hotel Wangfujing</h3>
+            <div class="hotel-meta"><span>4 Nächte</span><span>8,4 / 10</span><span>1,4 km zur Verbotenen Stadt</span></div>
+            <div class="hotel-total">ca. 200–220 € gesamt</div>
+          </article>
+          <article class="panel hotel hk">
+            <div class="hotel-city">Hongkong · 6.–11.11.</div><h3>SLEEEP Soho</h3>
+            <div class="hotel-meta"><span>Kapselhotel</span><span>5 Nächte</span><span>7,0 / 10</span><span>Sheung Wan / Soho</span></div>
+            <div class="hotel-total">ca. 140–160 € gesamt</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tage">
+      <div class="section-head">
+        <div><span class="section-num">02</span><h2>Tag für Tag</h2><p>Tippe auf einen Tag, um Details und Tagesbudget zu öffnen.</p></div>
+        <div class="timeline-tools">
+          <div class="filter-row" role="group" aria-label="Tage filtern">
+            <button class="chip active" data-filter="all" type="button">Alle</button>
+            <button class="chip" data-filter="beijing" type="button">Peking</button>
+            <button class="chip" data-filter="hongkong" type="button">Hongkong</button>
+            <button class="chip" data-filter="transit" type="button">Reise</button>
+          </div>
+          <button class="text-btn" id="toggle-all" type="button">Alle öffnen</button>
+        </div>
+      </div>
+      <div class="timeline" id="timeline">
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">2</div></div><div class="day-card"><button type="button" aria-expanded="true"><span><span class="day-date">Mo · 2. November</span><span class="day-title">Ankunft & Akklimatisieren</span></span><span class="day-toggle">+</span></button><div class="day-content"><p>Airport Express (<strong>¥25</strong>) nach Dongzhimen, Wangfujing Snackstraße und zum Sonnenuntergang in den Jingshan Park (<strong>¥2</strong>) – mit bestem Blick auf die Verbotene Stadt.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥150 · 19 €</b></p></div></div></article>
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">3</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Di · 3. November</span><span class="day-title">Verbotene Stadt & Hutongs</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Verbotene Stadt – Ticket nur via WeChat-Mini-Programm <strong>„Palace Museum“</strong>, ¥40 und Reisepass nötig. Danach Tian’anmen-Platz und Nanluoguxiang-Hutongs.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥170 · 21 €</b></p></div></div></article>
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">4</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mi · 4. November</span><span class="day-title">Große Mauer bei Mutianyu</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Mubus ab Dongzhimen (<strong>¥80 retour</strong>, vorbuchen), Eintritt ¥45 und Seilbahn ¥140. Warm anziehen – im November kann es auf der Mauer frisch und windig sein.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥365 · 46 €</b></p></div></div></article>
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">5</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Do · 5. November</span><span class="day-title">Himmelstempel & Sommerpalast</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags durch den Himmelstempel-Park (<strong>¥28–35</strong>), nachmittags zum Sommerpalast (<strong>¥20</strong>).</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥190 · 24 €</b></p></div></div></article>
+        <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">6</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Fr · 6. November</span><span class="day-title">Peking → Hongkong</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags Shichahai und Houhai-See. Um <strong>18:25 Uhr</strong> Abflug, um <strong>21:50 Uhr</strong> Ankunft in Hongkong. Airport Express HK$130; Octopus-Karte HK$150.</p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">7</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Sa · 7. November</span><span class="day-title">Victoria Peak & Soho</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Peak Tram Return (<strong>HK$116</strong>, online vorbuchen), Lugard Road Rundweg, Mid-Levels Escalator und abends Soho.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$350–400 · 39–44 €</b></p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">8</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">So · 8. November</span><span class="day-title">Lantau & Big Buddha</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Ngong Ping Seilbahn (<strong>ca. HK$185–190 retour</strong>, online vorbuchen), Big Buddha und Po Lin Kloster.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$380 · 42 €</b></p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">9</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mo · 9. November</span><span class="day-title">Kowloon bei Tag & Nacht</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Mong Kok Märkte, Tsim Sha Tsui Promenade, Temple Street Night Market, um <strong>20:00 Uhr</strong> Symphony of Lights (gratis) und Star Ferry bei Nacht (HK$5).</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$250 · 28 €</b></p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">10</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Di · 10. November</span><span class="day-title">Freier Tag · du entscheidest</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Drei sehr unterschiedliche Optionen für deinen letzten vollen Tag:</p><div class="option-tabs" role="group" aria-label="Optionen für den freien Tag"><button type="button" class="active" data-option="macau">A · Macau</button><button type="button" data-option="hike">B · Wandern</button><button type="button" data-option="stanley">C · Stanley</button></div><p class="option-detail" id="option-detail"><strong>Macau:</strong> TurboJET ab Sheung Wan, ca. HK$390 retour.</p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">11</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mi · 11. November</span><span class="day-title">Central & Abflug</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags Central und Hollywood Road. Um <strong>20:20 Uhr</strong> Abflug nach Peking; Ankunft 23:55 Uhr.</p></div></div></article>
+        <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">12</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Do · 12. November</span><span class="day-title">Heimflug nach München</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Um <strong>02:55 Uhr</strong> Weiterflug mit CA961. Landung in München um <strong>06:35 Uhr</strong>.</p></div></div></article>
+      </div>
+    </section>
+
+    <section id="budget">
+      <div class="section-head"><div><span class="section-num">03</span><h2>Budget</h2><p>Realistische Spanne für eine Person – mittel/günstig gerechnet.</p></div></div>
+      <div class="budget-wrap">
+        <div class="panel budget-chart" aria-label="Budgetposten als Balkendiagramm">
+          <div class="bar-list">
+            <div class="bar-row"><div class="bar-label"><span>Flüge</span><span>629 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Hotels</span><span>340–380 €</span></div><div class="bar-track"><div class="bar-fill" style="width:57%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Peking vor Ort</span><span>125–150 €</span></div><div class="bar-track"><div class="bar-fill" style="width:22%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Hongkong vor Ort</span><span>200–265 €</span></div><div class="bar-track"><div class="bar-fill" style="width:37%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>eSIM + Versicherung</span><span>50–70 €</span></div><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div>
+          </div>
+        </div>
+        <aside class="budget-total">
+          <div><small>Gesamtbudget</small><div class="big-total">1.350–<br>1.500 €</div><span class="budget-range">≈ 123–136 € pro Reisetag</span></div>
+          <p class="budget-note">Preise sind Planwerte. Flug, Hotels, Wechselkurse und Eintritte vor der Buchung erneut prüfen.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="tipps">
+      <div class="section-head"><div><span class="section-num">04</span><h2>Gut vorbereitet</h2><p>Die sechs Dinge, die zwischen „ankommen“ und „entspannt ankommen“ den Unterschied machen.</p></div></div>
+      <div class="tips-grid">
+        <article class="tip"><div class="tip-icon">V</div><h3>VPN fürs Festland</h3><p>Astrill VPN oder LetsVPN <strong>vor Abreise</strong> installieren und testen. Für Hongkong nicht nötig.</p></article>
+        <article class="tip"><div class="tip-icon">¥</div><h3>Bezahlen in Peking</h3><p>Alipay installieren und ausländische Kreditkarte verknüpfen. Unter ¥200 gebührenfrei; ¥500 Bargeld als Backup.</p></article>
+        <article class="tip"><div class="tip-icon">O</div><h3>Bezahlen in Hongkong</h3><p>Octopus-Karte für MTR, Fähren und kleine Einkäufe; Kreditkarte ergänzend.</p></article>
+        <article class="tip"><div class="tip-icon">e</div><h3>eSIM</h3><p>Saily oder Holafly vor Abreise kaufen und per QR-Code installieren.</p></article>
+        <article class="tip"><div class="tip-icon">A</div><h3>Apps</h3><p>Alipay, Amap, Trip.com, MTR Mobile und WeChat vor Abreise einrichten.</p></article>
+        <article class="tip"><div class="tip-icon">°</div><h3>Wetter & Dokumente</h3><p>Peking 5–12 °C: warme Jacke und Mütze. Hongkong 20–24 °C. Reisepass in Peking immer dabeihaben.</p></article>
+      </div>
+      <div class="panel" style="margin-top:13px;padding:18px 21px;border-radius:14px;color:var(--muted);font-size:.84rem;"><strong style="color:var(--ink)">Einreise:</strong> Deutsche Staatsbürger visumfrei bis 30 Tage (Stand September 2026).</div>
+    </section>
+
+    <section id="checkliste">
+      <div class="panel check-panel">
+        <div class="check-head"><div><h2>Vor der Reise</h2><p>Zum Abhaken · Fortschritt gilt nur, solange diese Seite geöffnet ist.</p></div><div class="progress-ring" aria-label="Fortschritt der Checkliste"><svg viewBox="0 0 76 76" aria-hidden="true"><circle class="ring-bg" cx="38" cy="38" r="31" fill="none" stroke-width="7"/><circle class="ring-value" cx="38" cy="38" r="31" fill="none" stroke-width="7" stroke-dasharray="194.78" stroke-dashoffset="194.78"/></svg><strong id="progress-text">0/9</strong></div></div>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy"><strong>27.10., 13:00 Uhr deutscher Zeit</strong>Forbidden-City-Ticket im WeChat-Mini-Programm „Palace Museum“ buchen – wichtigster Punkt.</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Mubus Mutianyu-Shuttle online buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Ngong Ping 360 Seilbahn online buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Peak Tram Ticket online buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">VPN installieren und testen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">eSIM kaufen und installieren</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Alipay einrichten und Kreditkarte verknüpfen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Hotels buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Reiseversicherung abschließen</span></label>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer"><span><b>Planungsstand 17.09.2026</b></span><span>Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
+  </main>
+
+  <script>
+    const dayButtons = [...document.querySelectorAll('.day-card > button')];
+    dayButtons.forEach(button => button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!open));
+      button.nextElementSibling.hidden = open;
+      updateToggleLabel();
+    }));
+
+    const toggleAll = document.getElementById('toggle-all');
+    function updateToggleLabel() {
+      const visibleButtons = dayButtons.filter(b => !b.closest('.day').classList.contains('hidden'));
+      const allOpen = visibleButtons.length && visibleButtons.every(b => b.getAttribute('aria-expanded') === 'true');
+      toggleAll.textContent = allOpen ? 'Alle schließen' : 'Alle öffnen';
+    }
+    toggleAll.addEventListener('click', () => {
+      const visibleButtons = dayButtons.filter(b => !b.closest('.day').classList.contains('hidden'));
+      const shouldOpen = !visibleButtons.every(b => b.getAttribute('aria-expanded') === 'true');
+      visibleButtons.forEach(button => {
+        button.setAttribute('aria-expanded', String(shouldOpen));
+        button.nextElementSibling.hidden = !shouldOpen;
+      });
+      updateToggleLabel();
+    });
+
+    document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      document.querySelectorAll('.day').forEach(day => day.classList.toggle('hidden', filter !== 'all' && day.dataset.city !== filter));
+      updateToggleLabel();
+    }));
+
+    const optionDetails = {
+      macau: '<strong>Macau:</strong> TurboJET ab Sheung Wan, ca. HK$390 retour.',
+      hike: '<strong>Dragon’s Back:</strong> 8,5 km Wanderung, kostenlos.',
+      stanley: '<strong>Stanley:</strong> Entspannter Küstenort; Bus ca. HK$40.'
+    };
+    document.querySelectorAll('[data-option]').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('[data-option]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      document.getElementById('option-detail').innerHTML = optionDetails[button.dataset.option];
+    }));
+
+    const checks = [...document.querySelectorAll('.check-item input')];
+    const ring = document.querySelector('.ring-value');
+    const progressText = document.getElementById('progress-text');
+    const circumference = 194.78;
+    function updateProgress() {
+      const done = checks.filter(c => c.checked).length;
+      progressText.textContent = `${done}/${checks.length}`;
+      ring.style.strokeDashoffset = circumference * (1 - done / checks.length);
+      document.querySelector('.progress-ring').setAttribute('aria-label', `${done} von ${checks.length} Punkten erledigt`);
+    }
+    checks.forEach(check => check.addEventListener('change', updateProgress));
+    updateProgress();
+  </script>
+</body>
+</html>
