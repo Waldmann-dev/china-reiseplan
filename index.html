@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#f4f0e6" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#151817" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="data:," />
-  <title>China-Reiseplan · Peking & Hongkong</title>
+  <title>China-Reiseplan · Peking, Shenzhen & Hongkong</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -205,6 +205,7 @@
     .hotel-stack { display:grid; gap: 16px; }
     .hotel { position: relative; overflow: hidden; padding: 25px; border-radius: 10px var(--radius-lg) var(--radius-lg) var(--radius-lg); }
     .hotel.beijing { border-top: 4px solid var(--red); }
+    .hotel.sz { border-top: 4px solid var(--gold); }
     .hotel.hk { border-top: 4px solid var(--hk); }
     .hotel-city { color: var(--muted); font-size:.75rem; font-weight: 800; text-transform:uppercase; letter-spacing:.11em; }
     .hotel h3 { margin: 7px 0 11px; font-size:1.15rem; }
@@ -234,6 +235,7 @@
       border-radius:50%; background:var(--paper); border:2px solid var(--line); font-family:Georgia,serif; font-size:1.2rem;
     }
     .day[data-city="beijing"] .day-number { border-color:var(--red); color:var(--red); }
+    .day[data-city="shenzhen"] .day-number { border-color:var(--gold); color:var(--gold); }
     .day[data-city="hongkong"] .day-number { border-color:var(--hk); color:var(--hk); }
     .day-card { border:1px solid var(--line); background:var(--paper); border-radius: 8px var(--radius-md) var(--radius-md) var(--radius-md); overflow:hidden; }
     .day-card button {
@@ -343,22 +345,23 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">28. Oktober – 10. November 2026</p>
-          <h1>Peking → Hongkong</h1>
-          <p class="hero-copy">Kaiserpaläste, Große Mauer und sieben Abende am Victoria Harbour – als kompakte 14-Tage-Reise ab München.</p>
+          <h1>Peking → Shenzhen → Hongkong</h1>
+          <p class="hero-copy">Kaiserpaläste, Große Mauer, zwei Tage Shenzhen und vier Abende am Victoria Harbour – als kompakte 14-Tage-Reise ab München.</p>
           <div class="hero-facts" aria-label="Reise-Eckdaten">
             <span class="fact">1 Person</span>
             <span class="fact">14 Tage</span>
-            <span class="fact">11 Nächte</span>
-            <span class="fact">ca. 1.400–1.560 €</span>
+            <span class="fact">10 Nächte</span>
+            <span class="fact">ca. 875–1.045 € zzgl. Flüge</span>
           </div>
         </div>
-        <div class="route-card" aria-label="Reiseroute München nach Peking, Hongkong und zurück">
-          <div class="route-title"><strong>Deine Route</strong><span>Air China · 4 Flüge</span></div>
-          <svg class="route-svg" viewBox="0 0 430 210" role="img" aria-label="Stilisierte Route mit vier Flügen: München nach Peking, Peking nach Hongkong, Hongkong zurück nach Peking und Peking nach München">
+        <div class="route-card" aria-label="Reiseroute München nach Peking, Shenzhen, Hongkong und zurück">
+          <div class="route-title"><strong>Deine Route</strong><span>3 Flüge · 1 Zugfahrt</span></div>
+          <svg class="route-svg" viewBox="0 0 430 210" role="img" aria-label="Stilisierte Route: München nach Peking, Peking nach Shenzhen, Shenzhen per Zug nach Hongkong, Hongkong zurück nach Peking und Peking nach München">
             <path class="route-line" d="M48 63 C122 14 194 27 252 62 C302 84 347 115 386 130" />
             <path class="route-line" d="M386 130 C341 176 289 180 252 154 C190 196 112 158 48 63" opacity=".52" />
             <circle class="route-ring" cx="48" cy="63" r="8" />
             <circle class="route-ring" cx="252" cy="62" r="8" />
+            <circle class="route-ring" cx="322" cy="96" r="6" />
             <circle class="route-ring" cx="386" cy="130" r="8" />
             <circle class="route-ring" cx="252" cy="154" r="6" />
             <g class="plane" transform="translate(145 31) rotate(15)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
@@ -367,7 +370,8 @@
             <g class="plane" transform="translate(150 169) rotate(202) scale(.8)"><path d="M0 5.5 9 3l8-9 3 1-4 9 8-2 3 2-12 5-1 8-2 1-3-7-6 1z"/></g>
             <text class="route-label" x="29" y="90">München</text><text class="route-date" x="29" y="104">Start &amp; Ziel</text>
             <text class="route-label" x="232" y="43">Peking</text><text class="route-date" x="232" y="30">4 Nächte</text>
-            <text class="route-label" x="326" y="119">Hongkong</text><text class="route-date" x="326" y="106">7 Nächte</text>
+            <text class="route-label" x="272" y="88">Shenzhen</text><text class="route-date" x="272" y="76">2 Nächte</text>
+            <text class="route-label" x="326" y="119">Hongkong</text><text class="route-date" x="326" y="106">4 Nächte</text>
             <text class="route-date" x="230" y="175">Umstieg</text>
           </svg>
         </div>
@@ -379,13 +383,14 @@
     </nav>
 
     <section id="reise">
-      <div class="section-head"><div><span class="section-num">01</span><h2>Reise auf einen Blick</h2><p>Vier Flüge, zwei Unterkünfte – alles in einer durchgehenden Dramaturgie.</p></div></div>
+      <div class="section-head"><div><span class="section-num">01</span><h2>Reise auf einen Blick</h2><p>Drei Flüge, eine Zugfahrt, drei Stopps – alles in einer durchgehenden Dramaturgie.</p></div></div>
       <div class="summary-grid">
         <article class="panel flight-panel">
-          <div class="panel-top"><h3>Flüge · Air China</h3><span class="price">ca. 629 €</span></div>
+          <div class="panel-top"><h3>Flüge & Zug</h3><span class="price">Preis offen</span></div>
           <div class="flight-list">
             <div class="flight"><div class="flight-date">Mi, 28.10.</div><div class="flight-route"><strong>München 12:30 → Peking 05:00</strong><span>Ankunft Donnerstag · nonstop</span></div><a class="flight-no" href="https://www.flightstats.com/v2/flight-tracker/CA/962" target="_blank" rel="noopener">CA962</a></div>
-            <div class="flight"><div class="flight-date">Mo, 2.11.</div><div class="flight-route"><strong>Peking 18:25 → Hongkong 21:50</strong><span>Direktflug</span></div><a class="flight-no" href="https://www.flightstats.com/v2/flight-tracker/CA/107" target="_blank" rel="noopener">CA107</a></div>
+            <div class="flight"><div class="flight-date">Mo, 2.11.</div><div class="flight-route"><strong>Peking → Shenzhen</strong><span>Abendflug · noch zu buchen (Alternative: Morgenflug 3.11.)</span></div><span class="flight-no">offen</span></div>
+            <div class="flight"><div class="flight-date">Do, 5.11.</div><div class="flight-route"><strong>Shenzhen → Hongkong</strong><span>Hochgeschwindigkeitszug · ca. 20 Min bis West Kowloon</span></div><span class="flight-no">Zug</span></div>
             <div class="flight"><div class="flight-date">Mo, 9.11.</div><div class="flight-route"><strong>Hongkong 20:20 → Peking 23:55</strong><span>Umstieg in der Nacht</span></div><a class="flight-no" href="https://www.flightstats.com/v2/flight-tracker/CA/116" target="_blank" rel="noopener">CA116</a></div>
             <div class="flight"><div class="flight-date">Di, 10.11.</div><div class="flight-route"><strong>Peking 02:55 → München 06:35</strong><span>Ankunft am selben Morgen</span></div><a class="flight-no" href="https://www.flightstats.com/v2/flight-tracker/CA/961" target="_blank" rel="noopener">CA961</a></div>
           </div>
@@ -396,10 +401,15 @@
             <div class="hotel-meta"><span>4 Nächte</span><span>8,4 / 10</span><span>1,4 km zur Verbotenen Stadt</span></div>
             <div class="hotel-total">ca. 200–220 € gesamt</div>
           </article>
+          <article class="panel hotel sz">
+            <div class="hotel-city">Shenzhen · 2.–4.11.</div><h3>Noch offen</h3>
+            <div class="hotel-meta"><span>2 Nächte</span><span>in Planung</span></div>
+            <div class="hotel-total">ca. 60–90 € (Schätzung)</div>
+          </article>
           <article class="panel hotel hk">
-            <div class="hotel-city">Hongkong · 2.–9.11.</div><h3>SLEEEP Soho</h3>
-            <div class="hotel-meta"><span>Kapselhotel</span><span>7 Nächte</span><span>7,0 / 10</span><span>Sheung Wan / Soho</span></div>
-            <div class="hotel-total">ca. 195–225 € gesamt</div>
+            <div class="hotel-city">Hongkong · 5.–9.11.</div><h3>SLEEEP Soho</h3>
+            <div class="hotel-meta"><span>Kapselhotel</span><span>4 Nächte</span><span>7,0 / 10</span><span>Sheung Wan / Soho</span></div>
+            <div class="hotel-total">ca. 110–130 € gesamt</div>
           </article>
         </div>
       </div>
@@ -413,6 +423,7 @@
             <button class="chip active" data-filter="all" type="button">Alle</button>
             <button class="chip" data-filter="beijing" type="button">Peking</button>
             <button class="chip" data-filter="hongkong" type="button">Hongkong</button>
+            <button class="chip" data-filter="shenzhen" type="button">Shenzhen</button>
             <button class="chip" data-filter="transit" type="button">Reise</button>
           </div>
           <button class="text-btn" id="toggle-all" type="button">Alle öffnen</button>
@@ -423,12 +434,12 @@
         <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">29</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Do · 29. Oktober</span><span class="day-title">Ankunft & Akklimatisieren</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Landung um <strong>05:00 Uhr</strong>. Airport Express (<strong>¥25</strong>) nach Dongzhimen, Wangfujing Snackstraße und zum Sonnenuntergang in den Jingshan Park (<strong>¥2</strong>) – mit bestem Blick auf die Verbotene Stadt.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥150 · 19 €</b></p></div></div></article>
         <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">30</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Fr · 30. Oktober</span><span class="day-title">Verbotene Stadt & Hutongs</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Verbotene Stadt – Ticket nur via WeChat-Mini-Programm <strong>„Palace Museum“</strong>, ¥40 und Reisepass nötig. Danach Tian’anmen-Platz und Nanluoguxiang-Hutongs.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥170 · 21 €</b></p></div></div></article>
         <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">31</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Sa · 31. Oktober</span><span class="day-title">Große Mauer bei Mutianyu</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Mubus ab Dongzhimen (<strong>¥80 retour</strong>, vorbuchen), Eintritt ¥45 und Seilbahn ¥140. Warm anziehen – Ende Oktober kann es auf der Mauer frisch und windig sein.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥365 · 46 €</b></p></div></div></article>
-        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">1</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">So · 1. November</span><span class="day-title">Himmelstempel & Sommerpalast</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags durch den Himmelstempel-Park (<strong>¥28–35</strong>), nachmittags zum Sommerpalast (<strong>¥20</strong>). Um <strong>16:30 Uhr</strong> Dumpling-Kochkurs <strong>Happy Panda</strong> (3 Std., Jiaozi selbst machen + Kung Pao Chicken, Essen inklusive) – ca. <strong>US$35 · 30 €</strong>, <a href="https://www.viator.com/en-CA/tours/Beijing/Beijing-Dumpling-Making-Workshop-with-Meal-and-Tea/d321-5558932P2" target="_blank" rel="noopener">auf Viator buchen</a>.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥440 · 54 €</b></p></div></div></article>
-        <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">2</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mo · 2. November</span><span class="day-title">Peking → Hongkong</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags Shichahai und Houhai-See. Um <strong>18:25 Uhr</strong> Abflug mit <strong>CA107</strong>, um <strong>21:50 Uhr</strong> Ankunft in Hongkong. Airport Express HK$130; Octopus-Karte HK$150.</p></div></div></article>
-        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">3</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Di · 3. November</span><span class="day-title">Central & Soho</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Frühstück bei <strong>Apt. Coffee</strong> (Wan Chai, Avo Toast), dann Hollywood Road und die Mid-Levels Escalator. Abends Soho.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$300 · 33 €</b></p></div></div></article>
-        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">4</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mi · 4. November</span><span class="day-title">Inseln & Strände</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Mit der Speed-Fähre ab Central (<strong>HK$30</strong>) auf eine der Inseln – oder Strandtag: Shek O, Repulse Bay oder Sai Wan. Abends Sushi bei <strong>Umai Sushikan</strong> (Harbour City) mit Panoramablick – Alternative: Sen-ryo.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$280 · 31 €</b></p></div></div></article>
-        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">5</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Do · 5. November</span><span class="day-title">Kowloon: Märkte & Essen</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Mong Kok Märkte, optional Haw Par Mansion. Optional <strong>Maxim's Dim Sum Academy</strong> (MOKO, Mong Kok): 2 Std. Dim-Sum-Kochkurs mit den Maxim's-Meistern, ca. <strong>HK$450 · 50 €</strong> – <a href="https://www.klook.com/en-PH/activity/204117-maxim-s-dim-sum-academy-cantonese-dim-sum-cooking-class/" target="_blank" rel="noopener">auf Klook buchen</a>, Termin danach bei Maxim's festlegen (mind. 8 Teilnehmer, Englisch auf Anfrage). Zum Essen: <strong>Yat Lok Roast Goose</strong> (Michelin), <strong>Mak's Noodle</strong> (Wonton Noodles) oder <strong>Din Tai Fung</strong> (Xiao Long Bao, veg. Dumplings mit Pilzen).</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$800 · 89 €</b></p></div></div></article>
-        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">6</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Fr · 6. November</span><span class="day-title">Man Mo Temple & Victoria Peak</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Frühstück bei <strong>Blend & Grind</strong> (Avo Toast), Man Mo Temple, dann mit der <strong>Peak Tram</strong> (Ticket online buchen – fährt seit 1888) auf den Victoria Peak. Kurz vor Sonnenuntergang hoch, Skyline bei Nacht mitnehmen. Abends <strong>Nom Nom Dumpling</strong> (veg. Optionen mit Pilzen & Tofu) und die <strong>Iron Fairies</strong> Bar.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$400 · 44 €</b></p></div></div></article>
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">1</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">So · 1. November</span><span class="day-title">Himmelstempel & Kochkurs</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Vormittags durch den Himmelstempel-Park (<strong>¥28–35</strong>). Um <strong>16:30 Uhr</strong> Dumpling-Kochkurs <strong>Happy Panda</strong> (3 Std., Jiaozi selbst machen + Kung Pao Chicken, Essen inklusive) – ca. <strong>US$35 · 30 €</strong>, <a href="https://www.viator.com/en-CA/tours/Beijing/Beijing-Dumpling-Making-Workshop-with-Meal-and-Tea/d321-5558932P2" target="_blank" rel="noopener">auf Viator buchen</a>.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥440 · 54 €</b></p></div></div></article>
+        <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">2</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mo · 2. November</span><span class="day-title">Peking → Shenzhen</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Montags haben die Museen in Peking zu (Verbotene Stadt geschlossen) – idealer Reisetag. Abends Flug nach Shenzhen (ca. 3,5 Std., noch zu buchen); alternativ geht auch ein Morgenflug am 3.11.</p></div></div></article>
+        <article class="day" data-city="shenzhen"><div class="day-marker"><div class="day-number">3</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Di · 3. November</span><span class="day-title">Shenzhen: Huaqiangbei & Lianhuashan</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Elektronik-Wahnsinn in der <strong>Huaqiangbei</strong>-Einkaufsstraße, mittags Streetfood in der <strong>Dongmen</strong>-Fußgängerzone. Nachmittags <strong>Lianhuashan Park</strong> mit Stadtpanorama.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥200 · 25 € (Schätzung)</b></p></div></div></article>
+        <article class="day" data-city="shenzhen"><div class="day-marker"><div class="day-number">4</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mi · 4. November</span><span class="day-title">Shenzhen: Dafen & OCT Loft</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p><strong>Dafen Oil Painting Village</strong> – hunderte Maler-Ateliers zum Stöbern. Nachmittags <strong>OCT Loft</strong> (Galerien und Cafés in alten Fabrikhallen), abends <strong>Shenzhen Bay Park</strong> am Wasser mit Blick Richtung Hongkong.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. ¥200 · 25 € (Schätzung)</b></p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">5</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Do · 5. November</span><span class="day-title">Ankunft Hongkong & Kowloon</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Morgens mit dem <strong>Hochgeschwindigkeitszug</strong> von Shenzhen nach Hongkong (ca. 20 Min bis West Kowloon, Reisepass für die Grenzkontrolle). Nachmittags <strong>Mong Kok</strong> Märkte, optional Haw Par Mansion. Optional <strong>Maxim's Dim Sum Academy</strong> (MOKO, Mong Kok): 2 Std. Dim-Sum-Kochkurs mit den Maxim's-Meistern, ca. <strong>HK$450 · 50 €</strong> – <a href="https://www.klook.com/en-PH/activity/204117-maxim-s-dim-sum-academy-cantonese-dim-sum-cooking-class/" target="_blank" rel="noopener">auf Klook buchen</a>, Termin danach bei Maxim's festlegen (mind. 8 Teilnehmer, Englisch auf Anfrage). Zum Essen: <strong>Yat Lok Roast Goose</strong> (Michelin), <strong>Mak's Noodle</strong> (Wonton Noodles) oder <strong>Din Tai Fung</strong> (Xiao Long Bao, veg. Dumplings mit Pilzen).</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$800 · 89 €</b></p></div></div></article>
+        <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">6</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Fr · 6. November</span><span class="day-title">Central, Soho & Victoria Peak</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Frühstück bei <strong>Apt. Coffee</strong> (Wan Chai), dann Hollywood Road und die Mid-Levels Escalator. <strong>Man Mo Temple</strong>, dann mit der <strong>Peak Tram</strong> (Ticket online buchen – fährt seit 1888) auf den Victoria Peak: kurz vor Sonnenuntergang hoch, Skyline bei Nacht mitnehmen. Abends <strong>Nom Nom Dumpling</strong> (veg. Optionen mit Pilzen & Tofu) und die <strong>Iron Fairies</strong> Bar.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$500 · 55 €</b></p></div></div></article>
         <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">7</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Sa · 7. November</span><span class="day-title">Lantau & Big Buddha</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p><strong>07:30 Uhr</strong> Fähre, um <strong>09:00 Uhr</strong> mit der <strong>Ngong Ping 360</strong> Gondel (online buchen) zum Tian Tan Buddha und Po Lin Kloster. Danach Bus nach <strong>Tai O</strong>, dem Fischerdorf auf Pfählen – Mittagessen: gegrillter Fisch. Nachmittags <strong>Sha Tin Racecourse</strong> (Rennen 13–18 Uhr) <strong>oder</strong> M+ Museum. Abends Tsim Sha Tsui: Clock Tower, Avenue of Stars, <strong>Symphony of Lights um 20:00 Uhr</strong> (ca. 10 Min., bester Spot bei der Bruce-Lee-Statue), dann mit der <strong>Star Ferry</strong> nach Hong Kong Island – und hoch in die <strong>Aqua</strong> oder <strong>OZONE</strong> Bar (Ritz-Carlton, höchste Bar der Welt).</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$450 · 50 €</b></p></div></div></article>
         <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">8</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">So · 8. November</span><span class="day-title">Dragon's Back & Night Market</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p><strong>07:30 Uhr</strong> mit der MTR nach Shau Kei Wan, Bus zum <strong>Dragon's Back</strong> Wanderweg (8,5 km) mit Viewpoint. Danach zum <strong>Monster Building</strong> (Yick Cheong Building, Quarry Bay) – optional Shek O Beach. Mittags <strong>Tim Ho Wan</strong> (Michelin Dim Sum, Har Gow), nachmittags <strong>Ding Ding Tram</strong> durch Causeway Bay & Wan Chai, abends <strong>Temple Street Night Market</strong>.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$350 · 39 €</b></p></div></div></article>
         <article class="day" data-city="hongkong"><div class="day-marker"><div class="day-number">9</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date">Mo · 9. November</span><span class="day-title">Buddhas & Abflug</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><p>Um <strong>09:30 Uhr</strong> zum <strong>Ten Thousand Buddhas Monastery</strong> (Sha Tin, Treppe mit goldenen Statuen), um <strong>12:30 Uhr</strong> Dim Sum im <strong>Maxim's Palace</strong> (Har Gow & Tee, Dim-Sum-Wagen). Um <strong>20:20 Uhr</strong> Abflug mit <strong>CA116</strong>.</p><p class="cost-line"><span>Tagesbudget</span><b>ca. HK$250 · 28 €</b></p></div></div></article>
@@ -441,16 +452,16 @@
       <div class="budget-wrap">
         <div class="panel budget-chart" aria-label="Budgetposten als Balkendiagramm">
           <div class="bar-list">
-            <div class="bar-row"><div class="bar-label"><span>Flüge</span><span>629 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span>Hotels</span><span>395–445 €</span></div><div class="bar-track"><div class="bar-fill" style="width:66%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span>Peking vor Ort</span><span>155–180 €</span></div><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span>Hongkong vor Ort</span><span>290–360 €</span></div><div class="bar-track"><div class="bar-fill" style="width:52%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span>eSIM + Versicherung</span><span>50–70 €</span></div><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Hotels (3 Stopps)</span><span>370–440 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Hongkong vor Ort</span><span>250–290 €</span></div><div class="bar-track"><div class="bar-fill" style="width:66%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Peking vor Ort</span><span>140–160 €</span></div><div class="bar-track"><div class="bar-fill" style="width:36%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Shenzhen vor Ort</span><span>50–70 € (Schätzung)</span></div><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span>Zug + eSIM + Versicherung</span><span>65–85 €</span></div><div class="bar-track"><div class="bar-fill" style="width:19%"></div></div></div>
           </div>
         </div>
         <aside class="budget-total">
-          <div><small>Gesamtbudget</small><div class="big-total">1.480–<br>1.640 €</div><span class="budget-range">≈ 106–117 € pro Reisetag</span></div>
-          <p class="budget-note">Preise sind Planwerte. Flug, Hotels, Wechselkurse und Eintritte vor der Buchung erneut prüfen.</p>
+          <div><small>Gesamtbudget</small><div class="big-total">875–<br>1.045 €</div><span class="budget-range">≈ 63–75 € pro Reisetag · zzgl. Flüge</span></div>
+          <p class="budget-note">Preise sind Planwerte ohne Flüge – Flugpreise, Hotels, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
         </aside>
       </div>
     </section>
@@ -459,35 +470,38 @@
       <div class="section-head"><div><span class="section-num">04</span><h2>Gut vorbereitet</h2><p>Die sechs Dinge, die zwischen „ankommen“ und „entspannt ankommen“ den Unterschied machen.</p></div></div>
       <div class="tips-grid">
         <article class="tip"><div class="tip-icon">V</div><h3>VPN fürs Festland</h3><p>Astrill VPN oder LetsVPN <strong>vor Abreise</strong> installieren und testen. Für Hongkong nicht nötig.</p></article>
-        <article class="tip"><div class="tip-icon">¥</div><h3>Bezahlen in Peking</h3><p>Alipay installieren und ausländische Kreditkarte verknüpfen. Unter ¥200 gebührenfrei; ¥500 Bargeld als Backup.</p></article>
+        <article class="tip"><div class="tip-icon">¥</div><h3>Bezahlen: Festland</h3><p>Alipay installieren und ausländische Kreditkarte verknüpfen – gilt für Peking & Shenzhen. Unter ¥200 gebührenfrei; ¥500 Bargeld als Backup.</p></article>
         <article class="tip"><div class="tip-icon">O</div><h3>Bezahlen in Hongkong</h3><p>Octopus-Karte für MTR, Fähren und kleine Einkäufe; Kreditkarte ergänzend.</p></article>
         <article class="tip"><div class="tip-icon">e</div><h3>eSIM</h3><p>Saily oder Holafly vor Abreise kaufen und per QR-Code installieren.</p></article>
         <article class="tip"><div class="tip-icon">A</div><h3>Apps</h3><p>Alipay, Amap, Trip.com, MTR Mobile und WeChat vor Abreise einrichten.</p></article>
-        <article class="tip"><div class="tip-icon">°</div><h3>Wetter & Dokumente</h3><p>Peking 5–12 °C: warme Jacke und Mütze. Hongkong 20–24 °C. Reisepass in Peking immer dabeihaben.</p></article>
+        <article class="tip"><div class="tip-icon">°</div><h3>Wetter & Dokumente</h3><p>Peking 5–12 °C: warme Jacke und Mütze. Shenzhen & Hongkong 20–26 °C. Reisepass in Peking immer dabei – für die Grenze Shenzhen ↔ Hongkong Pflicht.</p></article>
       </div>
       <div class="panel" style="margin-top:13px;padding:18px 21px;border-radius:14px;color:var(--muted);font-size:.84rem;"><strong style="color:var(--ink)">Einreise:</strong> Deutsche Staatsbürger visumfrei bis 30 Tage (Stand September 2026).</div>
     </section>
 
     <section id="checkliste">
       <div class="panel check-panel">
-        <div class="check-head"><div><h2>Vor der Reise</h2><p>Zum Abhaken · Fortschritt gilt nur, solange diese Seite geöffnet ist.</p></div><div class="progress-ring" aria-label="Fortschritt der Checkliste"><svg viewBox="0 0 76 76" aria-hidden="true"><circle class="ring-bg" cx="38" cy="38" r="31" fill="none" stroke-width="7"/><circle class="ring-value" cx="38" cy="38" r="31" fill="none" stroke-width="7" stroke-dasharray="194.78" stroke-dashoffset="194.78"/></svg><strong id="progress-text">0/11</strong></div></div>
+        <div class="check-head"><div><h2>Vor der Reise</h2><p>Zum Abhaken · Fortschritt gilt nur, solange diese Seite geöffnet ist.</p></div><div class="progress-ring" aria-label="Fortschritt der Checkliste"><svg viewBox="0 0 76 76" aria-hidden="true"><circle class="ring-bg" cx="38" cy="38" r="31" fill="none" stroke-width="7"/><circle class="ring-value" cx="38" cy="38" r="31" fill="none" stroke-width="7" stroke-dasharray="194.78" stroke-dashoffset="194.78"/></svg><strong id="progress-text">0/14</strong></div></div>
         <div class="check-list">
-          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy"><strong>23.10., 13:00 Uhr deutscher Zeit</strong>Forbidden-City-Ticket im WeChat-Mini-Programm „Palace Museum“ buchen – wichtigster Punkt.</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy"><strong>23.10., 13:00 Uhr deutscher Zeit</strong>Forbidden-City-Ticket im WeChat-Mini-Programm „Palace Museum“ buchen – für Fr, 30.10. (montags geschlossen!).</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Mubus Mutianyu-Shuttle online buchen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Ngong Ping 360 Seilbahn online buchen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Peak Tram Ticket online buchen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy"><strong>Dumpling-Kochkurs Peking</strong> (Happy Panda, 1.11.) auf Viator/GetYourGuide buchen – ca. US$35</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy"><strong>Maxim's Dim Sum Academy</strong> (5.11.) auf Klook buchen, Termin bei Maxim's festlegen – HK$450</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Flug Peking → Shenzhen (Mo, 2.11. abends) buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Hotel Shenzhen (2 Nächte, 2.–4.11.) buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Zugticket Shenzhen → Hongkong (Do, 5.11.) buchen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">VPN installieren und testen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">eSIM kaufen und installieren</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Alipay einrichten und Kreditkarte verknüpfen</span></label>
-          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Hotels buchen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Hotels buchen (Peking, Shenzhen, Hongkong)</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy">Reiseversicherung abschließen</span></label>
         </div>
       </div>
     </section>
 
-    <footer class="footer"><span><b>Planungsstand 27.09.2026</b></span><span>Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
+    <footer class="footer"><span><b>Planungsstand 02.10.2026</b></span><span>Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
 
   <script>
