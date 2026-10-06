@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -150,17 +150,7 @@
     .route-date { fill: #b9cdc4; font-size: 9px; font-family: "Avenir Next", Avenir, sans-serif; }
     .route-note { margin: 10px 0 0; color: #b9cdc4; font-size: .72rem; }
     .plane { fill: #f0cc7b; }
-    .warn-banner {
-      margin: 18px 0 0;
-      padding: 18px 22px;
-      border-radius: var(--radius-md);
-      background: var(--red-soft);
-      border: 2px solid var(--red);
-      color: var(--ink);
-      font-size: .9rem;
-      box-shadow: var(--shadow);
-    }
-    .warn-banner strong { color: var(--red); }
+    .lang-bar { display:flex; justify-content:flex-end; margin:2px 0 16px; }
     .quicknav {
       position: sticky;
       top: 8px;
@@ -191,12 +181,13 @@
       border: 1px solid var(--line);
       background: var(--paper);
       border-radius: 999px;
-      padding: 8px 13px;
+      padding: 12px 22px;
       cursor: pointer;
-      font-size: .78rem;
+      font-size: .95rem;
       font-weight: 750;
       color: var(--muted);
       white-space: nowrap;
+      box-shadow: var(--shadow);
     }
     .lang-toggle:hover, .lang-toggle:focus-visible { border-color: var(--ink); outline: none; }
     .lang-toggle .lang-opt { padding: 0 2px; }
@@ -269,8 +260,8 @@
     }
     .day-card button:hover { background: color-mix(in srgb, var(--paper-2) 52%, transparent); }
     .day-card button:focus-visible { outline: 2px solid var(--jade); outline-offset:-3px; }
-    .day-date { color:var(--muted); font-size:.75rem; font-weight:750; text-transform:uppercase; letter-spacing:.08em; }
-    .day-title { margin-top:3px; font-size:1.02rem; font-weight:800; }
+    .day-date { display:block; color:var(--muted); font-size:.75rem; font-weight:750; text-transform:uppercase; letter-spacing:.08em; }
+    .day-title { display:block; margin-top:3px; font-size:1.02rem; font-weight:800; }
     .day-toggle { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--paper-2); transition:transform .2s ease; }
     .day-card button[aria-expanded="true"] .day-toggle { transform:rotate(45deg); }
     .day-content { padding: 0 20px 20px; }
@@ -344,7 +335,8 @@
       .route-card { padding:16px 13px; border-radius:18px; }
       .quicknav { width:100%; justify-content:space-between; margin-bottom:38px; }
       .quicknav a { padding:7px 8px; font-size:.68rem; }
-      .lang-toggle { padding:7px 8px; font-size:.68rem; }
+      .lang-bar { margin-bottom:12px; }
+      .lang-toggle { padding:10px 18px; font-size:.85rem; }
       section { margin:48px 0; }
       .flight-panel, .hotel, .budget-chart, .budget-total { padding:20px; }
       .flight { grid-template-columns:62px minmax(0,1fr); }
@@ -378,7 +370,7 @@
             <span class="fact" data-i18n="fact1">1 Person</span>
             <span class="fact" data-i18n="fact2">13 Tage</span>
             <span class="fact" data-i18n="fact3">9 Nächte*</span>
-            <span class="fact" data-i18n="fact4">ca. 1.419–1.589 €</span>
+            <span class="fact" data-i18n="fact4">ca. 1.805–1.955 €</span>
           </div>
         </div>
         <div class="route-card" data-i18n-aria="ariaRouteCard" aria-label="Reiseroute München nach Peking, Shenzhen, Hongkong und zurück">
@@ -406,11 +398,11 @@
       </div>
     </header>
 
-    <div class="warn-banner" role="alert" data-i18n="warnBanner">⚠️ <strong>Achtung Flugbuchung:</strong> Das gebuchte Ticket (PGZN5K) geht nach <strong>Hongkong</strong> (Ankunft Fr, 30.10., 16:45 Uhr) – Peking ist nur ca. 8 Stunden Umsteigehalt. Der geplante mehrtägige Peking-Aufenthalt (30.10.–2.11.) widerspricht dem Ticket – Klärung noch offen. Optionen: Ticket ändern, oder in Peking nur mit Handgepäck aussteigen („Hidden-City“) – mit dem Risiko, dass das Aufgabegepäck nach Hongkong weiterfliegt und es gegen die Airline-Bedingungen verstößt.</div>
-
+    <div class="lang-bar">
+      <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
+    </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
       <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a>
-      <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Sprache wechseln"><span class="lang-opt active" data-lang="de">DE</span> | <span class="lang-opt" data-lang="en">EN</span></button>
     </nav>
 
     <section id="reise">
@@ -461,7 +453,7 @@
       </div>
       <div class="timeline" id="timeline">
         <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">29</div></div><div class="day-card"><button type="button" aria-expanded="true"><span><span class="day-date" data-i18n="d29date">Do · 29. Oktober</span><span class="day-title" data-i18n="d29title">Abflug ab München</span></span><span class="day-toggle">+</span></button><div class="day-content"><ul><li data-i18n="d29li1">Um <strong>12:30 Uhr</strong> Abflug mit <strong>CA962</strong> (Air China) ab München.</li><li data-i18n="d29li2">Umstieg in Peking (ca. 8 Std.), Weiterflug <strong>CA109</strong> nach Hongkong.</li><li data-i18n="d29li3">Ankunft Hongkong: Fr, 30.10., <strong>16:45 Uhr</strong>.</li></ul></div></div></article>
-        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">30</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date" data-i18n="d30date">Fr · 30. Oktober</span><span class="day-title" data-i18n="d30title">Ankunft & Akklimatisieren</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><ul><li data-i18n="d30li1">⚠️ <strong>Hinweis:</strong> Laut Ticket landest du heute um 16:45 Uhr in <strong>Hongkong</strong> – der Peking-Aufenthalt ist noch zu klären.</li><li data-i18n="d30li2">Falls Peking: Airport Express (<strong>¥25</strong>) nach Dongzhimen, Hotel einchecken.</li><li data-i18n="d30li3">Wangfujing Snackstraße und zum Sonnenuntergang in den Jingshan Park (<strong>¥2</strong>) – mit bestem Blick auf die Verbotene Stadt.</li></ul><p class="cost-line"><span data-i18n="costLabel">Tagesbudget</span><b>ca. ¥150 · 19 €</b></p></div></div></article>
+        <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">30</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date" data-i18n="d30date">Fr · 30. Oktober</span><span class="day-title" data-i18n="d30title">Ankunft & Akklimatisieren</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><ul><li data-i18n="d30li1">Ankommen und akklimatisieren – nach dem langen Flug den Tag bewusst ruhig angehen.</li><li data-i18n="d30li2">Falls Peking: Airport Express (<strong>¥25</strong>) nach Dongzhimen, Hotel einchecken.</li><li data-i18n="d30li3">Wangfujing Snackstraße und zum Sonnenuntergang in den Jingshan Park (<strong>¥2</strong>) – mit bestem Blick auf die Verbotene Stadt.</li></ul><p class="cost-line"><span data-i18n="costLabel">Tagesbudget</span><b>ca. ¥150 · 19 €</b></p></div></div></article>
         <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">31</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date" data-i18n="d31date">Sa · 31. Oktober</span><span class="day-title" data-i18n="d31title">Verbotene Stadt & Hutongs</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><ul><li data-i18n="d31li1">Verbotene Stadt – Ticket nur via WeChat-Mini-Programm <strong>„Palace Museum“</strong>, ¥40 und Reisepass nötig.</li><li data-i18n="d31li2">Danach Tian’anmen-Platz und Nanluoguxiang-Hutongs.</li></ul><p class="cost-line"><span data-i18n="costLabel">Tagesbudget</span><b>ca. ¥170 · 21 €</b></p></div></div></article>
         <article class="day" data-city="beijing"><div class="day-marker"><div class="day-number">1</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date" data-i18n="d1date">So · 1. November</span><span class="day-title" data-i18n="d1title">Himmelstempel & Kochkurs</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><ul><li data-i18n="d1li1">Vormittags durch den Himmelstempel-Park (<strong>¥28–35</strong>).</li><li data-i18n="d1li2">Um <strong>16:30 Uhr</strong> Dumpling-Kochkurs <strong>Happy Panda</strong> (3 Std., Jiaozi selbst machen + Kung Pao Chicken, Essen inklusive) – ca. <strong>US$35 · 30 €</strong>, <a href="https://www.viator.com/en-CA/tours/Beijing/Beijing-Dumpling-Making-Workshop-with-Meal-and-Tea/d321-5558932P2" target="_blank" rel="noopener">auf Viator buchen</a>.</li><li data-i18n="d1li3">Alternative statt Himmelstempel: Tagesausflug zur <strong>Großen Mauer bei Mutianyu</strong> (Mubus ab Dongzhimen, <strong>¥80 retour</strong> + Eintritt ¥45 + Seilbahn ¥140) – in dieser 4-Tage-Peking-Variante ist sonst kein Platz dafür.</li></ul><p class="cost-line"><span data-i18n="costLabel">Tagesbudget</span><b>ca. ¥440 · 54 €</b></p></div></div></article>
         <article class="day" data-city="transit"><div class="day-marker"><div class="day-number">2</div></div><div class="day-card"><button type="button" aria-expanded="false"><span><span class="day-date" data-i18n="d2date">Mo · 2. November</span><span class="day-title" data-i18n="d2title">Peking → Shenzhen</span></span><span class="day-toggle">+</span></button><div class="day-content" hidden><ul><li data-i18n="d2li1">Montags haben die Museen in Peking zu (Verbotene Stadt geschlossen) – idealer Reisetag.</li><li data-i18n="d2li2">Abendflug nach Shenzhen (ca. 3,5 Std., noch zu buchen); alternativ geht auch ein Morgenflug am 3.11.</li></ul></div></div></article>
@@ -541,7 +533,7 @@
         eyebrow: `29. Oktober – 10. November 2026`,
         heroH1: `Peking → Shenzhen → Hongkong`,
         heroCopy: `Verbotene Stadt, zwei Tage Shenzhen und vier Abende am Victoria Harbour – als kompakte 13-Tage-Reise ab München.`,
-        fact1: `1 Person`, fact2: `13 Tage`, fact3: `9 Nächte*`, fact4: `ca. 1.419–1.589 €`,
+        fact1: `1 Person`, fact2: `13 Tage`, fact3: `9 Nächte*`, fact4: `ca. 1.805–1.955 €`,
         routeTitle: `Deine Route`, routeSub: `3 Flüge · 1 Zugfahrt`,
         svgStart: `Start &amp; Ziel`, svgBj: `3 Nächte*`, svgSz: `2 Nächte`, svgHk: `4 Nächte`, svgLayover: `Umstieg`,
         routeNote: `* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).`,
@@ -584,7 +576,7 @@
         d29li2: `Umstieg in Peking (ca. 8 Std.), Weiterflug <strong>CA109</strong> nach Hongkong.`,
         d29li3: `Ankunft Hongkong: Fr, 30.10., <strong>16:45 Uhr</strong>.`,
         d30date: `Fr · 30. Oktober`, d30title: `Ankunft & Akklimatisieren`,
-        d30li1: `⚠️ <strong>Hinweis:</strong> Laut Ticket landest du heute um 16:45 Uhr in <strong>Hongkong</strong> – der Peking-Aufenthalt ist noch zu klären.`,
+        d30li1: `Ankommen und akklimatisieren – nach dem langen Flug den Tag bewusst ruhig angehen.`,
         d30li2: `Falls Peking: Airport Express (<strong>¥25</strong>) nach Dongzhimen, Hotel einchecken.`,
         d30li3: `Wangfujing Snackstraße und zum Sonnenuntergang in den Jingshan Park (<strong>¥2</strong>) – mit bestem Blick auf die Verbotene Stadt.`,
         d31date: `Sa · 31. Oktober`, d31title: `Verbotene Stadt & Hutongs`,
@@ -686,7 +678,7 @@
         eyebrow: `October 29 – November 10, 2026`,
         heroH1: `Beijing → Shenzhen → Hong Kong`,
         heroCopy: `Forbidden City, two days in Shenzhen and four evenings at Victoria Harbour – a compact 13-day trip from Munich.`,
-        fact1: `1 person`, fact2: `13 days`, fact3: `9 nights*`, fact4: `approx. €1,419–1,589`,
+        fact1: `1 person`, fact2: `13 days`, fact3: `9 nights*`, fact4: `approx. €1,805–1,955`,
         routeTitle: `Your route`, routeSub: `3 flights · 1 train ride`,
         svgStart: `Start &amp; end`, svgBj: `3 nights*`, svgSz: `2 nights`, svgHk: `4 nights`, svgLayover: `Layover`,
         routeNote: `* Beijing stay still to be confirmed (see note below).`,
@@ -729,7 +721,7 @@
         d29li2: `Layover in Beijing (approx. 8 hrs), connecting flight <strong>CA109</strong> to Hong Kong.`,
         d29li3: `Arrival Hong Kong: Fri, Oct 30, <strong>4:45 PM</strong>.`,
         d30date: `Fri · October 30`, d30title: `Arrival & acclimatizing`,
-        d30li1: `⚠️ <strong>Note:</strong> Per your ticket you land in <strong>Hong Kong</strong> at 4:45 PM today – the Beijing stay is still to be clarified.`,
+        d30li1: `Arrive and acclimatize – take it easy today after the long flight.`,
         d30li2: `If Beijing: Airport Express (<strong>¥25</strong>) to Dongzhimen, check into the hotel.`,
         d30li3: `Wangfujing Snack Street and Jingshan Park at sunset (<strong>¥2</strong>) – best view of the Forbidden City.`,
         d31date: `Sat · October 31`, d31title: `Forbidden City & hutongs`,
@@ -828,11 +820,11 @@
       }
     };
 
-    let currentLang = 'de';
+    let currentLang = 'en';
     const langToggle = document.getElementById('lang-toggle');
 
     function setLang(lang) {
-      if (!I18N[lang]) lang = 'de';
+      if (!I18N[lang]) lang = 'en';
       currentLang = lang;
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -900,8 +892,8 @@
     }
     checks.forEach(check => check.addEventListener('change', updateProgress));
 
-    let savedLang = 'de';
-    try { savedLang = localStorage.getItem('china-reise-lang') || 'de'; } catch (e) {}
+    let savedLang = 'en';
+    try { savedLang = localStorage.getItem('china-reise-lang') || 'en'; } catch (e) {}
     setLang(savedLang);
   </script>
 </body>
