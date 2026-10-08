@@ -287,6 +287,8 @@
     .bar-row:nth-child(4) .bar-fill { background:var(--hk); animation-delay:.24s; }
     .bar-row:nth-child(5) .bar-fill { background:#6b6f85; animation-delay:.32s; }
     .bar-row:nth-child(6) .bar-fill { background:#8a7bb8; animation-delay:.4s; }
+    .bar-row:nth-child(7) .bar-fill { background:#4d9de0; animation-delay:.48s; }
+    .bar-row:nth-child(8) .bar-fill { background:#e07a4d; animation-delay:.56s; }
     @keyframes grow { from { transform:scaleX(0); } }
     .budget-total { background:var(--ink); color:var(--bg); display:flex; flex-direction:column; justify-content:space-between; }
     .budget-total small { opacity:.72; }
@@ -368,10 +370,9 @@
           <h1 data-i18n="heroH1">Peking → Shenzhen → Hongkong</h1>
           <p class="hero-copy" data-i18n="heroCopy">Verbotene Stadt, zwei Tage Shenzhen und drei Abende am Victoria Harbour – als kompakte 13-Tage-Reise ab München.</p>
           <div class="hero-facts" data-i18n-aria="ariaFacts" aria-label="Reise-Eckdaten">
-            <span class="fact" data-i18n="fact1">1 Person</span>
             <span class="fact" data-i18n="fact2">13 Tage</span>
             <span class="fact" data-i18n="fact3">8 Nächte*</span>
-            <span class="fact" data-i18n="fact4">ca. 1.465–1.615 €</span>
+            <span class="fact" data-i18n="fact4">ca. 1.403–1.533 €</span>
           </div>
         </div>
         <div class="route-card" data-i18n-aria="ariaRouteCard" aria-label="Reiseroute München nach Peking, Shenzhen, Hongkong und zurück">
@@ -420,9 +421,14 @@
         </article>
         <div class="hotel-stack">
           <article class="panel hotel beijing">
-            <div class="hotel-city" data-i18n="hbCity">Peking · 30.10.–2.11.</div><h3>Hanting Hotel Wangfujing</h3>
-            <div class="hotel-meta"><span data-i18n="hbNights">3 Nächte</span><span>8,4 / 10</span><span data-i18n="hbDist">1,4 km zur Verbotenen Stadt</span></div>
-            <div class="hotel-total" data-i18n="hbTotal">ca. 150–170 € gesamt</div>
+            <div class="hotel-city" data-i18n="hbCity">Peking · 30.10.–2.11.</div><h3>IMMERSING</h3>
+            <div class="hotel-meta"><span data-i18n="hbBooked">Gebucht</span><span data-i18n="hbNights">3 Nächte</span><span data-i18n="hbRoom">Basic-Doppelzimmer</span></div>
+            <ul class="hotel-details">
+              <li data-i18n="hbAddr">No. 55 Dazhian West Street, 100010 Peking – Tel. +86 185 1517 1998</li>
+              <li data-i18n="hbCheck">Check-in ab 14:00 Uhr · Check-out bis 12:00 Uhr</li>
+              <li data-i18n="hbMeals">Ohne Verpflegung · Effektivpreis nach 12,26 € Check24-Vorteilen</li>
+            </ul>
+            <div class="hotel-total" data-i18n="hbTotal">88,42 € (gebucht)</div>
           </article>
           <article class="panel hotel sz">
             <div class="hotel-city" data-i18n="hsCity">Shenzhen · 2.–4.11.</div><h3 data-i18n="hsName">Noch offen</h3>
@@ -431,14 +437,14 @@
           </article>
           <article class="panel hotel hk">
             <div class="hotel-city" data-i18n="hkCity">Hongkong · 6.–9.11.</div><h3>Burlington Hotel</h3>
-            <div class="hotel-meta"><span data-i18n="hkBooked">Gebucht · nicht erstattungsfähig</span><span data-i18n="hkNights">3 Nächte</span><span data-i18n="hkRoom">Doppelzimmer</span><span data-i18n="hkGuests">2 Erwachsene</span></div>
+            <div class="hotel-meta"><span data-i18n="hkBooked">Gebucht · nicht erstattungsfähig</span><span data-i18n="hkNights">3 Nächte</span><span data-i18n="hkRoom">Doppelzimmer</span></div>
             <ul class="hotel-details">
               <li data-i18n="hkAddr">55 Hennessy Road, Wan Chai – Tel. +852 37001000</li>
               <li data-i18n="hkCheck">Check-in ab 14:00 Uhr · Check-out bis 12:00 Uhr</li>
               <li data-i18n="hkMeals">Kein Frühstück inklusive</li>
               <li data-i18n="hkTax">zzgl. 3 % Hong Kong Accommodation Tax, zahlbar beim Check-in</li>
             </ul>
-            <div class="hotel-total" data-i18n="hkTotal">155,33 € p. P. (310,66 € für 2, gebucht)</div>
+            <div class="hotel-total" data-i18n="hkTotal">155,33 € (gebucht)</div>
           </article>
         </div>
       </div>
@@ -476,21 +482,23 @@
     </section>
 
     <section id="budget">
-      <div class="section-head"><div><span class="section-num">03</span><h2 data-i18n="sec3h">Budget</h2><p data-i18n="sec3sub">Realistische Spanne für eine Person – mittel/günstig gerechnet.</p></div></div>
+      <div class="section-head"><div><span class="section-num">03</span><h2 data-i18n="sec3h">Budget</h2><p data-i18n="sec3sub">Realistische Spanne – mittel/günstig gerechnet.</p></div></div>
       <div class="budget-wrap">
         <div class="panel budget-chart" data-i18n-aria="ariaBudgetChart" aria-label="Budgetposten als Balkendiagramm">
           <div class="bar-list">
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bFlights">Flüge</span><span data-i18n="bFlightsVal">594,17 €</span></div><div class="bar-track"><div class="bar-fill" style="width:79%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotels">Hotels (3 Stopps)</span><span data-i18n="bHotelsVal">365–415 €</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHk">Hongkong vor Ort</span><span data-i18n="bHkVal">250–290 €</span></div><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bBj">Peking vor Ort</span><span data-i18n="bBjVal">140–160 €</span></div><div class="bar-track"><div class="bar-fill" style="width:21%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bSz">Shenzhen vor Ort</span><span data-i18n="bSzVal">50–70 € (Schätzung)</span></div><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bMisc">Zug + eSIM + Versicherung</span><span data-i18n="bMiscVal">65–85 €</span></div><div class="bar-track"><div class="bar-fill" style="width:11%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bFlights">Flüge</span><span data-i18n="bFlightsVal">594,17 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelBj">Hotel Peking (gebucht)</span><span data-i18n="bHotelBjVal">88,42 €</span></div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelSz">Hotel Shenzhen (offen)</span><span data-i18n="bHotelSzVal">60–90 €</span></div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelHk">Hotel Hongkong (gebucht)</span><span data-i18n="bHotelHkVal">155,33 €</span></div><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bBj">Peking vor Ort</span><span data-i18n="bBjVal">140–160 €</span></div><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bSz">Shenzhen vor Ort</span><span data-i18n="bSzVal">50–70 € (Schätzung)</span></div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHk">Hongkong vor Ort</span><span data-i18n="bHkVal">250–290 €</span></div><div class="bar-track"><div class="bar-fill" style="width:49%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bMisc">Zug + eSIM + Versicherung</span><span data-i18n="bMiscVal">65–85 €</span></div><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div></div>
           </div>
         </div>
         <aside class="budget-total">
-          <div><small data-i18n="totalSmall">Gesamtbudget</small><div class="big-total" data-i18n="bigTotal">1.465–<br>1.615 €</div><span class="budget-range" data-i18n="budgetRange">≈ 113–124 € pro Reisetag</span></div>
-          <p class="budget-note" data-i18n="budgetNote">Inklusive gebuchter Flüge (594,17 €). Hotels, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
+          <div><small data-i18n="totalSmall">Gesamtbudget</small><div class="big-total" data-i18n="bigTotal">1.403–<br>1.533 €</div><span class="budget-range" data-i18n="budgetRange">≈ 108–118 € pro Reisetag</span></div>
+          <p class="budget-note" data-i18n="budgetNote">Inklusive gebuchter Flüge (594,17 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
         </aside>
       </div>
     </section>
@@ -524,7 +532,6 @@
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="c10">VPN installieren und testen</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="c11">eSIM kaufen und installieren</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="c12">Alipay einrichten und Kreditkarte verknüpfen</span></label>
-          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="c13">Hotels buchen (Peking, Shenzhen, Hongkong)</span></label>
           <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="c14">Reiseversicherung abschließen</span></label>
         </div>
       </div>
@@ -540,7 +547,7 @@
         eyebrow: `29. Oktober – 10. November 2026`,
         heroH1: `Peking → Shenzhen → Hongkong`,
         heroCopy: `Verbotene Stadt, zwei Tage Shenzhen und drei Abende am Victoria Harbour – als kompakte 13-Tage-Reise ab München.`,
-        fact1: `1 Person`, fact2: `13 Tage`, fact3: `8 Nächte*`, fact4: `ca. 1.465–1.615 €`,
+        fact2: `13 Tage`, fact3: `8 Nächte*`, fact4: `ca. 1.403–1.533 €`,
         routeTitle: `Deine Route`, routeSub: `3 Flüge · 1 Zugfahrt`,
         svgStart: `Start &amp; Ziel`, svgBj: `3 Nächte*`, svgSz: `2 Nächte`, svgHk: `3 Nächte`, svgLayover: `Umstieg`,
         routeNote: `* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).`,
@@ -571,9 +578,9 @@
         f4date: `Mo, 9.11.`,
         f4routeT: `Hongkong 20:20 → München 06:35`,
         f4routeS: `Ankunft Dienstag · via Peking (CA116 + CA961) · 1 Stopp · 17:15 Std · Economy · 302,69 € · Buchung MK9T66 · Gepäck: 23 kg + 5 kg`,
-        hbCity: `Peking · 30.10.–2.11.`, hbNights: `3 Nächte`, hbDist: `1,4 km zur Verbotenen Stadt`, hbTotal: `ca. 150–170 € gesamt`,
+        hbCity: `Peking · 30.10.–2.11.`, hbBooked: `Gebucht`, hbNights: `3 Nächte`, hbRoom: `Basic-Doppelzimmer`, hbAddr: `No. 55 Dazhian West Street, 100010 Peking – Tel. +86 185 1517 1998`, hbCheck: `Check-in ab 14:00 Uhr · Check-out bis 12:00 Uhr`, hbMeals: `Ohne Verpflegung · Effektivpreis nach 12,26 € Check24-Vorteilen`, hbTotal: `88,42 € (gebucht)`,
         hsCity: `Shenzhen · 2.–4.11.`, hsName: `Noch offen`, hsNights: `2 Nächte`, hsPlan: `in Planung`, hsTotal: `ca. 60–90 € (Schätzung)`,
-        hkCity: `Hongkong · 6.–9.11.`, hkBooked: `Gebucht · nicht erstattungsfähig`, hkNights: `3 Nächte`, hkRoom: `Doppelzimmer`, hkGuests: `2 Erwachsene`, hkAddr: `55 Hennessy Road, Wan Chai – Tel. +852 37001000`, hkCheck: `Check-in ab 14:00 Uhr · Check-out bis 12:00 Uhr`, hkMeals: `Kein Frühstück inklusive`, hkTax: `zzgl. 3 % Hong Kong Accommodation Tax, zahlbar beim Check-in`, hkTotal: `155,33 € p. P. (310,66 € für 2, gebucht)`,
+        hkCity: `Hongkong · 6.–9.11.`, hkBooked: `Gebucht · nicht erstattungsfähig`, hkNights: `3 Nächte`, hkRoom: `Doppelzimmer`, hkAddr: `55 Hennessy Road, Wan Chai – Tel. +852 37001000`, hkCheck: `Check-in ab 14:00 Uhr · Check-out bis 12:00 Uhr`, hkMeals: `Kein Frühstück inklusive`, hkTax: `zzgl. 3 % Hong Kong Accommodation Tax, zahlbar beim Check-in`, hkTotal: `155,33 € (gebucht)`,
         sec2h: `Tag für Tag`,
         sec2sub: `Tippe auf einen Tag, um Details und Tagesbudget zu öffnen.`,
         chipAll: `Alle`, chipBj: `Peking`, chipHk: `Hongkong`, chipSz: `Shenzhen`, chipTr: `Reise`,
@@ -633,17 +640,19 @@
         d10li1: `Weiterflug <strong>CA961</strong> ab Peking um 02:55 Uhr, Landung in München um <strong>06:35 Uhr</strong>.`,
         costLabel: `Tagesbudget`,
         sec3h: `Budget`,
-        sec3sub: `Realistische Spanne für eine Person – mittel/günstig gerechnet.`,
+        sec3sub: `Realistische Spanne – mittel/günstig gerechnet.`,
         bFlights: `Flüge`, bFlightsVal: `594,17 €`,
-        bHotels: `Hotels (3 Stopps)`, bHotelsVal: `365–415 €`,
+        bHotelBj: `Hotel Peking (gebucht)`, bHotelBjVal: `88,42 €`,
+        bHotelSz: `Hotel Shenzhen (offen)`, bHotelSzVal: `60–90 €`,
+        bHotelHk: `Hotel Hongkong (gebucht)`, bHotelHkVal: `155,33 €`,
         bHk: `Hongkong vor Ort`, bHkVal: `250–290 €`,
         bBj: `Peking vor Ort`, bBjVal: `140–160 €`,
         bSz: `Shenzhen vor Ort`, bSzVal: `50–70 € (Schätzung)`,
         bMisc: `Zug + eSIM + Versicherung`, bMiscVal: `65–85 €`,
         totalSmall: `Gesamtbudget`,
-        bigTotal: `1.465–<br>1.615 €`,
-        budgetRange: `≈ 113–124 € pro Reisetag`,
-        budgetNote: `Inklusive gebuchter Flüge (594,17 €) und gebuchtem Hongkong-Hotel (155,33 € p. P., via Klook, nicht erstattungsfähig). Übrige Hotels, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.`,
+        bigTotal: `1.403–<br>1.533 €`,
+        budgetRange: `≈ 108–118 € pro Reisetag`,
+        budgetNote: `Inklusive gebuchter Flüge (594,17 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.`,
         sec4h: `Gut vorbereitet`,
         sec4sub: `Die sechs Dinge, die zwischen „ankommen“ und „entspannt ankommen“ den Unterschied machen.`,
         t1h: `VPN fürs Festland`,
@@ -674,7 +683,6 @@
         c10: `VPN installieren und testen`,
         c11: `eSIM kaufen und installieren`,
         c12: `Alipay einrichten und Kreditkarte verknüpfen`,
-        c13: `Hotels buchen (Peking, Shenzhen, Hongkong)`,
         c14: `Reiseversicherung abschließen`,
         footerDate: `Planungsstand 06.10.2026`,
         footerNote: `Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.`,
@@ -685,7 +693,7 @@
         eyebrow: `October 29 – November 10, 2026`,
         heroH1: `Beijing → Shenzhen → Hong Kong`,
         heroCopy: `Forbidden City, two days in Shenzhen and three evenings at Victoria Harbour – a compact 13-day trip from Munich.`,
-        fact1: `1 person`, fact2: `13 days`, fact3: `8 nights*`, fact4: `approx. €1,465–1,615`,
+        fact2: `13 days`, fact3: `8 nights*`, fact4: `approx. €1,403–1,533`,
         routeTitle: `Your route`, routeSub: `3 flights · 1 train ride`,
         svgStart: `Start &amp; end`, svgBj: `3 nights*`, svgSz: `2 nights`, svgHk: `3 nights`, svgLayover: `Layover`,
         routeNote: `* Beijing stay still to be confirmed (see note below).`,
@@ -716,9 +724,9 @@
         f4date: `Mon, Nov 9`,
         f4routeT: `Hong Kong 8:20 PM → Munich 6:35 AM`,
         f4routeS: `Arrival Tuesday · via Beijing (CA116 + CA961) · 1 stop · 17h 15m · Economy · €302.69 · Booking MK9T66 · Baggage: 23 kg + 5 kg`,
-        hbCity: `Beijing · Oct 30 – Nov 2`, hbNights: `3 nights`, hbDist: `1.4 km to the Forbidden City`, hbTotal: `approx. €150–170 total`,
+        hbCity: `Beijing · Oct 30 – Nov 2`, hbBooked: `Booked`, hbNights: `3 nights`, hbRoom: `Basic double room`, hbAddr: `No. 55 Dazhian West Street, 100010 Beijing – Tel. +86 185 1517 1998`, hbCheck: `Check-in from 2:00 PM · check-out until 12:00 PM`, hbMeals: `No meals included · effective price after €12.26 Check24 benefits`, hbTotal: `€88.42 (booked)`,
         hsCity: `Shenzhen · Nov 2–4`, hsName: `Not decided yet`, hsNights: `2 nights`, hsPlan: `in planning`, hsTotal: `approx. €60–90 (estimate)`,
-        hkCity: `Hong Kong · Nov 6–9`, hkBooked: `Booked · non-refundable`, hkNights: `3 nights`, hkRoom: `Double room`, hkGuests: `2 adults`, hkAddr: `55 Hennessy Road, Wan Chai – Tel. +852 37001000`, hkCheck: `Check-in from 2:00 PM · check-out until 12:00 PM`, hkMeals: `No breakfast included`, hkTax: `plus 3% Hong Kong Accommodation Tax, payable at check-in`, hkTotal: `€155.33 per person (€310.66 for 2, booked)`,
+        hkCity: `Hong Kong · Nov 6–9`, hkBooked: `Booked · non-refundable`, hkNights: `3 nights`, hkRoom: `Double room`, hkAddr: `55 Hennessy Road, Wan Chai – Tel. +852 37001000`, hkCheck: `Check-in from 2:00 PM · check-out until 12:00 PM`, hkMeals: `No breakfast included`, hkTax: `plus 3% Hong Kong Accommodation Tax, payable at check-in`, hkTotal: `€155.33 (booked)`,
         sec2h: `Day by day`,
         sec2sub: `Tap a day to open details and daily budget.`,
         chipAll: `All`, chipBj: `Beijing`, chipHk: `Hong Kong`, chipSz: `Shenzhen`, chipTr: `Trip`,
@@ -778,17 +786,19 @@
         d10li1: `Connecting flight <strong>CA961</strong> from Beijing at 2:55 AM, landing in Munich at <strong>6:35 AM</strong>.`,
         costLabel: `Daily budget`,
         sec3h: `Budget`,
-        sec3sub: `Realistic range for one person – mid-range/budget estimate.`,
+        sec3sub: `Realistic range – mid-range/budget estimate.`,
         bFlights: `Flights`, bFlightsVal: `€594.17`,
-        bHotels: `Hotels (3 stops)`, bHotelsVal: `€365–415`,
+        bHotelBj: `Beijing hotel (booked)`, bHotelBjVal: `€88.42`,
+        bHotelSz: `Shenzhen hotel (open)`, bHotelSzVal: `€60–90`,
+        bHotelHk: `Hong Kong hotel (booked)`, bHotelHkVal: `€155.33`,
         bHk: `Hong Kong on site`, bHkVal: `€250–290`,
         bBj: `Beijing on site`, bBjVal: `€140–160`,
         bSz: `Shenzhen on site`, bSzVal: `€50–70 (estimate)`,
         bMisc: `Train + eSIM + insurance`, bMiscVal: `€65–85`,
         totalSmall: `Total budget`,
-        bigTotal: `€1,465–<br>€1,615`,
-        budgetRange: `≈ €113–124 per travel day`,
-        budgetNote: `Including booked flights (€594.17) and booked Hong Kong hotel (€155.33 per person, via Klook, non-refundable). Recheck remaining hotels, exchange rates and entry fees before booking. Shenzhen figures are rough estimates.`,
+        bigTotal: `€1,403–<br>€1,533`,
+        budgetRange: `≈ €108–118 per travel day`,
+        budgetNote: `Including booked flights (€594.17), booked Beijing hotel (€88.42, via Check24) and booked Hong Kong hotel (€155.33, via Klook, non-refundable). Recheck remaining hotel, exchange rates and entry fees before booking. Shenzhen figures are rough estimates.`,
         sec4h: `Well prepared`,
         sec4sub: `Six things that make the difference between arriving and arriving relaxed.`,
         t1h: `VPN for mainland China`,
@@ -819,7 +829,6 @@
         c10: `Install and test VPN`,
         c11: `Buy and install eSIM`,
         c12: `Set up Alipay and link credit card`,
-        c13: `Book hotels (Beijing, Shenzhen, Hong Kong)`,
         c14: `Get travel insurance`,
         footerDate: `Last updated: Oct 6, 2026`,
         footerNote: `Recheck prices, flight times, entry rules and availability before departure.`,
