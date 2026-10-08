@@ -289,6 +289,7 @@
     .bar-row:nth-child(6) .bar-fill { background:#8a7bb8; animation-delay:.4s; }
     .bar-row:nth-child(7) .bar-fill { background:#4d9de0; animation-delay:.48s; }
     .bar-row:nth-child(8) .bar-fill { background:#e07a4d; animation-delay:.56s; }
+    .bar-row:nth-child(9) .bar-fill { background:#9de04d; animation-delay:.64s; }
     @keyframes grow { from { transform:scaleX(0); } }
     .budget-total { background:var(--ink); color:var(--bg); display:flex; flex-direction:column; justify-content:space-between; }
     .budget-total small { opacity:.72; }
@@ -486,19 +487,20 @@
       <div class="budget-wrap">
         <div class="panel budget-chart" data-i18n-aria="ariaBudgetChart" aria-label="Budgetposten als Balkendiagramm">
           <div class="bar-list">
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bFlights">Flüge</span><span data-i18n="bFlightsVal">594,17 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelBj">Hotel Peking (gebucht)</span><span data-i18n="bHotelBjVal">88,42 €</span></div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelSz">Hotel Shenzhen (offen)</span><span data-i18n="bHotelSzVal">60–90 €</span></div><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelHk">Hotel Hongkong (gebucht)</span><span data-i18n="bHotelHkVal">155,33 €</span></div><div class="bar-track"><div class="bar-fill" style="width:26%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bBj">Peking vor Ort</span><span data-i18n="bBjVal">140–160 €</span></div><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bSz">Shenzhen vor Ort</span><span data-i18n="bSzVal">50–70 € (Schätzung)</span></div><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bHk">Hongkong vor Ort</span><span data-i18n="bHkVal">250–290 €</span></div><div class="bar-track"><div class="bar-fill" style="width:49%"></div></div></div>
-            <div class="bar-row"><div class="bar-label"><span data-i18n="bMisc">Zug + eSIM + Versicherung</span><span data-i18n="bMiscVal">65–85 €</span></div><div class="bar-track"><div class="bar-fill" style="width:14%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bFlightOut">Hinflug</span><span data-i18n="bFlightOutVal">291,48 €</span></div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bFlightBack">Rückflug</span><span data-i18n="bFlightBackVal">302,69 €</span></div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelBj">Hotel Peking (gebucht)</span><span data-i18n="bHotelBjVal">88,42 €</span></div><div class="bar-track"><div class="bar-fill" style="width:29%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelSz">Hotel Shenzhen (offen)</span><span data-i18n="bHotelSzVal">60–90 €</span></div><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHotelHk">Hotel Hongkong (gebucht)</span><span data-i18n="bHotelHkVal">155,33 €</span></div><div class="bar-track"><div class="bar-fill" style="width:51%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bBj">Peking vor Ort</span><span data-i18n="bBjVal">140–160 €</span></div><div class="bar-track"><div class="bar-fill" style="width:53%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bSz">Shenzhen vor Ort</span><span data-i18n="bSzVal">50–70 € (Schätzung)</span></div><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bHk">Hongkong vor Ort</span><span data-i18n="bHkVal">250–290 €</span></div><div class="bar-track"><div class="bar-fill" style="width:96%"></div></div></div>
+            <div class="bar-row"><div class="bar-label"><span data-i18n="bMisc">Zug + eSIM + Versicherung</span><span data-i18n="bMiscVal">65–85 €</span></div><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div></div>
           </div>
         </div>
         <aside class="budget-total">
           <div><small data-i18n="totalSmall">Gesamtbudget</small><div class="big-total" data-i18n="bigTotal">1.403–<br>1.533 €</div><span class="budget-range" data-i18n="budgetRange">≈ 108–118 € pro Reisetag</span></div>
-          <p class="budget-note" data-i18n="budgetNote">Inklusive gebuchter Flüge (594,17 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
+          <p class="budget-note" data-i18n="budgetNote">Inklusive gebuchter Flüge (Hinflug 291,48 €, Rückflug 302,69 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
         </aside>
       </div>
     </section>
@@ -641,7 +643,8 @@
         costLabel: `Tagesbudget`,
         sec3h: `Budget`,
         sec3sub: `Realistische Spanne – mittel/günstig gerechnet.`,
-        bFlights: `Flüge`, bFlightsVal: `594,17 €`,
+        bFlightOut: `Hinflug`, bFlightOutVal: `291,48 €`,
+        bFlightBack: `Rückflug`, bFlightBackVal: `302,69 €`,
         bHotelBj: `Hotel Peking (gebucht)`, bHotelBjVal: `88,42 €`,
         bHotelSz: `Hotel Shenzhen (offen)`, bHotelSzVal: `60–90 €`,
         bHotelHk: `Hotel Hongkong (gebucht)`, bHotelHkVal: `155,33 €`,
@@ -652,7 +655,7 @@
         totalSmall: `Gesamtbudget`,
         bigTotal: `1.403–<br>1.533 €`,
         budgetRange: `≈ 108–118 € pro Reisetag`,
-        budgetNote: `Inklusive gebuchter Flüge (594,17 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.`,
+        budgetNote: `Inklusive gebuchter Flüge (Hinflug 291,48 €, Rückflug 302,69 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.`,
         sec4h: `Gut vorbereitet`,
         sec4sub: `Die sechs Dinge, die zwischen „ankommen“ und „entspannt ankommen“ den Unterschied machen.`,
         t1h: `VPN fürs Festland`,
@@ -787,7 +790,8 @@
         costLabel: `Daily budget`,
         sec3h: `Budget`,
         sec3sub: `Realistic range – mid-range/budget estimate.`,
-        bFlights: `Flights`, bFlightsVal: `€594.17`,
+        bFlightOut: `Outbound flight`, bFlightOutVal: `€291.48`,
+        bFlightBack: `Return flight`, bFlightBackVal: `€302.69`,
         bHotelBj: `Beijing hotel (booked)`, bHotelBjVal: `€88.42`,
         bHotelSz: `Shenzhen hotel (open)`, bHotelSzVal: `€60–90`,
         bHotelHk: `Hong Kong hotel (booked)`, bHotelHkVal: `€155.33`,
@@ -798,7 +802,7 @@
         totalSmall: `Total budget`,
         bigTotal: `€1,403–<br>€1,533`,
         budgetRange: `≈ €108–118 per travel day`,
-        budgetNote: `Including booked flights (€594.17), booked Beijing hotel (€88.42, via Check24) and booked Hong Kong hotel (€155.33, via Klook, non-refundable). Recheck remaining hotel, exchange rates and entry fees before booking. Shenzhen figures are rough estimates.`,
+        budgetNote: `Including booked flights (outbound €291.48, return €302.69), booked Beijing hotel (€88.42, via Check24) and booked Hong Kong hotel (€155.33, via Klook, non-refundable). Recheck remaining hotel, exchange rates and entry fees before booking. Shenzhen figures are rough estimates.`,
         sec4h: `Well prepared`,
         sec4sub: `Six things that make the difference between arriving and arriving relaxed.`,
         t1h: `VPN for mainland China`,
