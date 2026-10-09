@@ -322,6 +322,22 @@
     .pack-group { font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:24px 0 2px; }
     .pack-group:first-child { margin-top:0; }
     .cook-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; }
+    #map { height:440px; border-radius:var(--radius-md); box-shadow:var(--shadow); z-index:0; }
+    .map-chips { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 14px; }
+    .map-chip {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 750;
+      color: var(--ink);
+    }
+    .map-chip:hover, .map-chip:focus-visible { border-color: var(--ink); outline:none; }
+    .map-chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .map-note { color:var(--muted); font-size:.85rem; margin:10px 0 0; }
+    .map-fallback { padding:30px; text-align:center; color:var(--muted); }
     .cook-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
     .cook-rank { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--ink); color:var(--bg); font-weight:800; font-size:.85rem; }
     .cook-city { font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
@@ -371,6 +387,7 @@
       *, *::before, *::after { animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; }
     }
   </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
   <main class="shell">
@@ -415,7 +432,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
     </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
-      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a>
+      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#karte" data-i18n="navMap">Karte</a>
     </nav>
 
     <section id="reise">
@@ -676,9 +693,26 @@
       <p class="cook-note"><span data-i18n="cookNote">Alle Details mit Buchungslinks:</span> <a href="https://muse.ai/s/kochkurse-peking-hongkong-xkt5xwxvmxlmu8s" target="_blank" rel="noopener" data-i18n="cookNoteLink">Kochkurs-Vergleich öffnen</a></p>
     </section>
 
+    <section id="karte">
+      <div class="section-head"><div><span class="section-num">08</span><h2 data-i18n="sec8h">Karte</h2><p data-i18n="sec8sub">Alle Stationen in Shenzhen & Hongkong – tippe auf einen Tag, um nur seine Stationen zu sehen.</p></div></div>
+      <div class="map-chips" role="group">
+        <button class="map-chip active" data-mapday="all" type="button" data-i18n="chipAll">Alle</button>
+        <button class="map-chip" data-mapday="3.11." type="button">3.11.</button>
+        <button class="map-chip" data-mapday="4.11." type="button">4.11.</button>
+        <button class="map-chip" data-mapday="5.11." type="button">5.11.</button>
+        <button class="map-chip" data-mapday="6.11." type="button">6.11.</button>
+        <button class="map-chip" data-mapday="7.11." type="button">7.11.</button>
+        <button class="map-chip" data-mapday="8.11." type="button">8.11.</button>
+        <button class="map-chip" data-mapday="9.11." type="button">9.11.</button>
+      </div>
+      <div id="map"></div>
+      <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
+    </section>
+
     <footer class="footer"><span><b data-i18n="footerDate">Planungsstand 06.10.2026</b></span><span data-i18n="footerNote">Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     const I18N = {
       de: {
@@ -715,6 +749,8 @@
         ck8price: `US$152 · ca. 129 €`, ck8desc: `Vollständiges Menü (Hot-and-Sour-Suppe, Gongbao Chicken, Fried Rice/Nudeln u.v.m.) + Marktbesuch, 4–4,5 Std., Englisch.`, ck8book: `Buchung: Cookly / Viator`,
         cookVerdict: `<strong>Fazit:</strong> Für ein richtiges Gericht statt nur Dumplings – Jian Bing (Peking, günstigste Option), Pots n Pans (Hongkong, vollständigstes Menü, ~129 €). Happy Panda ist der beste Kompromiss aus Preis und Umfang.`,
         cookNote: `Alle Details mit Buchungslinks:`, cookNoteLink: `Kochkurs-Vergleich öffnen`,
+        navMap: `Karte`, sec8h: `Karte`, sec8sub: `Alle Stationen in Shenzhen & Hongkong – tippe auf einen Tag, um nur seine Stationen zu sehen.`,
+        mapNote: `Positionen sind ungefähr · Karte benötigt Internet.`, mapOffline: `Karte konnte nicht geladen werden (Internet nötig).`,
         langToggleAria: `Sprache wechseln`,
         ariaFacts: `Reise-Eckdaten`,
         ariaQuicknav: `Schnellnavigation`,
@@ -861,7 +897,9 @@
         svgStart: `Start &amp; end`, svgBj: `3 nights*`, svgSz: `2 nights`, svgHk: `3 nights`, svgLayover: `Layover`,
         routeNote: `* Beijing stay still to be confirmed (see note below).`,
         warnBanner: `⚠️ <strong>Flight booking alert:</strong> The booked ticket (PGZN5K) goes to <strong>Hong Kong</strong> (arrival Fri, Oct 30, 4:45 PM) – Beijing is only an approx. 8-hour layover. The planned multi-day Beijing stay (Oct 30 – Nov 2) contradicts the ticket – still to be clarified. Options: change the ticket, or get off in Beijing with hand luggage only ("hidden city") – at the risk that checked baggage continues to Hong Kong and that this violates the airline's conditions.`,
-        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`, navPack: `Packing list`, navCook: `Cooking classes`,
+        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`, navPack: `Packing list`, navCook: `Cooking classes`, navMap: `Map`,
+        sec8h: `Map`, sec8sub: `All stops in Shenzhen & Hong Kong – tap a day to see only its stops.`,
+        mapNote: `Approximate positions · map needs internet.`, mapOffline: `Map could not be loaded (needs internet).`,
         sec6h: `Packing list`, sec6sub: `What goes in the suitcase – sorted by city and weather.`,
         packGeneralH: `General – documents, tech & money`,
         pg1: `Passport (+ photo/scan copy)`, pg2: `Universal travel adapter (mainland Type A/C/I · Hong Kong Type G)`, pg3: `Power bank + charging cables`, pg4: `Headphones, neck pillow, sleep mask, earplugs (21-hour flight)`, pg5: `Credit card + some cash (RMB & HKD)`, pg6: `First-aid kit: plasters, painkillers, personal medication`, pg7: `Travel insurance (policy copy)`,
@@ -1098,6 +1136,72 @@
     let savedLang = 'en';
     try { savedLang = localStorage.getItem('china-reise-lang') || 'en'; } catch (e) {}
     setLang(savedLang);
+
+    // ---- Übersichtskarte Shenzhen & Hongkong ----
+    const SPOTS = [
+      { d:'3.11.', n:'Huaqiangbei', lat:22.5435, lng:114.0853 },
+      { d:'3.11.', n:'Dongmen', lat:22.5476, lng:114.1172 },
+      { d:'3.11.', n:'Lianhuashan Park', lat:22.5556, lng:114.0563 },
+      { d:'4.11.', n:'Dafen Oil Painting Village', lat:22.6127, lng:114.1345 },
+      { d:'4.11.', n:'OCT Loft', lat:22.5347, lng:113.9895 },
+      { d:'4.11.', n:'Shenzhen Bay Park', lat:22.5178, lng:114.0128 },
+      { d:'5.11.', n:'West Kowloon Station', lat:22.3030, lng:114.1601 },
+      { d:'5.11.', n:'Mong Kok', lat:22.3193, lng:114.1694 },
+      { d:'5.11.', n:"Maxim's Dim Sum Academy (MOKO)", lat:22.3186, lng:114.1722 },
+      { d:'5.11.', n:'Yat Lok (Roast Goose)', lat:22.2847, lng:114.1547 },
+      { d:'6.11.', n:'Burlington Hotel', lat:22.2776, lng:114.1736 },
+      { d:'6.11.', n:'Apt. Coffee (Wan Chai)', lat:22.2770, lng:114.1750 },
+      { d:'6.11.', n:'Hollywood Road / Man Mo Temple', lat:22.2840, lng:114.1519 },
+      { d:'6.11.', n:'Peak Tram Station', lat:22.2771, lng:114.1584 },
+      { d:'6.11.', n:'Victoria Peak', lat:22.2759, lng:114.1455 },
+      { d:'7.11.', n:'Tung Chung', lat:22.2890, lng:113.9417 },
+      { d:'7.11.', n:'Big Buddha (Ngong Ping)', lat:22.2558, lng:113.9080 },
+      { d:'7.11.', n:'Tai O', lat:22.2508, lng:113.8629 },
+      { d:'7.11.', n:'Sha Tin Racecourse', lat:22.3989, lng:114.2108 },
+      { d:'7.11.', n:'M+ Museum', lat:22.3032, lng:114.1601 },
+      { d:'7.11.', n:'Avenue of Stars', lat:22.2930, lng:114.1700 },
+      { d:'7.11.', n:'OZONE Bar (Ritz-Carlton)', lat:22.3037, lng:114.1603 },
+      { d:'8.11.', n:"Dragon's Back (To Tei Wan)", lat:22.2447, lng:114.2398 },
+      { d:'8.11.', n:'Shek O (optional)', lat:22.2301, lng:114.2507 },
+      { d:'8.11.', n:'Monster Building', lat:22.2857, lng:114.2147 },
+      { d:'8.11.', n:'Temple Street Night Market', lat:22.3044, lng:114.1694 },
+      { d:'9.11.', n:'Ten Thousand Buddhas Monastery', lat:22.3877, lng:114.1847 },
+      { d:'9.11.', n:'HKG Airport', lat:22.3080, lng:113.9145 }
+    ];
+    let map = null, mapMarkers = [];
+    function initMap() {
+      const el = document.getElementById('map');
+      if (!window.L) {
+        el.innerHTML = '<p class="map-fallback">' + I18N[currentLang].mapOffline + '</p>';
+        return;
+      }
+      map = L.map('map').setView([22.36, 114.10], 10);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      mapMarkers = SPOTS.map(s => {
+        const m = L.marker([s.lat, s.lng]).bindPopup('<b>' + s.n + '</b><br>' + s.d);
+        m.spotDay = s.d;
+        m.addTo(map);
+        return m;
+      });
+    }
+    document.querySelectorAll('.map-chip').forEach(chip => chip.addEventListener('click', () => {
+      document.querySelectorAll('.map-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      if (!map) return;
+      const f = chip.dataset.mapday;
+      const shown = [];
+      mapMarkers.forEach(m => {
+        const vis = f === 'all' || m.spotDay === f;
+        if (vis) { m.addTo(map); shown.push(m.getLatLng()); }
+        else { map.removeLayer(m); }
+      });
+      if (f === 'all') map.setView([22.36, 114.10], 10);
+      else if (shown.length) map.fitBounds(L.latLngBounds(shown).pad(0.25));
+    }));
+    initMap();
   </script>
 </body>
 </html>
