@@ -294,6 +294,7 @@
     .big-total { font-family:Georgia,serif; font-size:clamp(3rem,7vw,5.1rem); line-height:1; margin:18px 0 11px; letter-spacing:-.05em; }
     .budget-range { display:inline-flex; padding:7px 10px; border:1px solid color-mix(in srgb, var(--bg) 30%, transparent); border-radius:999px; font-size:.78rem; width:max-content; }
     .budget-note { margin-top:24px; font-size:.82rem; opacity:.74; }
+    .fx-live { margin-top:10px; font-size:.85rem; background:rgba(139,58,58,.07); border:1px solid rgba(139,58,58,.16); border-radius:10px; padding:8px 12px; display:inline-block; }
     .tips-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:13px; }
     .tip { padding:21px; background:var(--paper); border-top:3px solid var(--jade); border-radius: 6px var(--radius-md) var(--radius-md); box-shadow:0 4px 16px rgba(25,35,31,.05); }
     .tip:nth-child(2), .tip:nth-child(5) { border-color:var(--red); }
@@ -510,6 +511,7 @@
         <aside class="budget-total">
           <div><small data-i18n="totalSmall">Gesamtbudget</small><div class="big-total" data-i18n="bigTotal">1.403–<br>1.533 €</div><span class="budget-range" data-i18n="budgetRange">≈ 108–118 € pro Reisetag</span></div>
           <p class="budget-note" data-i18n="budgetNote">Inklusive gebuchter Flüge (Hinflug 291,48 €, Rückflug 302,69 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.</p>
+          <p class="fx-live" id="fx-live"></p>
         </aside>
       </div>
     </section>
@@ -900,6 +902,8 @@
         bigTotal: `1.403–<br>1.533 €`,
         budgetRange: `≈ 108–118 € pro Reisetag`,
         budgetNote: `Inklusive gebuchter Flüge (Hinflug 291,48 €, Rückflug 302,69 €), gebuchtem Peking-Hotel (88,42 €, via Check24) und gebuchtem Hongkong-Hotel (155,33 €, via Klook, nicht erstattungsfähig). Übriges Hotel, Wechselkurse und Eintritte vor der Buchung erneut prüfen. Shenzhen-Werte sind grobe Schätzungen.`,
+        fxLoading: `Live-Kurse werden geladen …`,
+        fxOffline: `Live-Kurse derzeit nicht verfügbar (offline) – siehe Hinweis oben.`,
         sec4h: `Gut vorbereitet`,
         sec4sub: `Die sechs Dinge, die zwischen „ankommen“ und „entspannt ankommen“ den Unterschied machen.`,
         t1h: `VPN fürs Festland`,
@@ -1102,6 +1106,8 @@
         bigTotal: `€1,403–<br>€1,533`,
         budgetRange: `≈ €108–118 per travel day`,
         budgetNote: `Including booked flights (outbound €291.48, return €302.69), booked Beijing hotel (€88.42, via Check24) and booked Hong Kong hotel (€155.33, via Klook, non-refundable). Recheck remaining hotel, exchange rates and entry fees before booking. Shenzhen figures are rough estimates.`,
+        fxLoading: `Loading live rates …`,
+        fxOffline: `Live rates unavailable (offline) – see note above.`,
         sec4h: `Well prepared`,
         sec4sub: `Six things that make the difference between arriving and arriving relaxed.`,
         t1h: `VPN for mainland China`,
@@ -1206,6 +1212,31 @@
       });
     }
 
+    let fxData = null;
+    function renderFx() {
+      const el = document.getElementById('fx-live');
+      if (!el) return;
+      const loc = currentLang === 'de' ? 'de-DE' : 'en-US';
+      if (!fxData) { el.textContent = I18N[currentLang].fxLoading; return; }
+      const cny = fxData.rates.CNY, hkd = fxData.rates.HKD;
+      const f2 = n => n.toLocaleString(loc, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      const f3 = n => n.toLocaleString(loc, {minimumFractionDigits: 3, maximumFractionDigits: 3});
+      const date = new Date(fxData.date + 'T12:00:00').toLocaleDateString(loc);
+      el.textContent = currentLang === 'de'
+        ? '\u{1F4B1} Live (EZB, ' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
+        : '\u{1F4B1} Live (ECB, ' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
+    }
+    function loadFx() {
+      renderFx();
+      fetch('https://api.frankfurter.app/latest?from=EUR&to=CNY,HKD')
+        .then(r => { if (!r.ok) throw 0; return r.json(); })
+        .then(d => { fxData = d; renderFx(); })
+        .catch(() => {
+          const el = document.getElementById('fx-live');
+          if (el && !fxData) el.textContent = I18N[currentLang].fxOffline;
+        });
+    }
+
     function setLang(lang) {
       if (!I18N[lang]) lang = 'en';
       currentLang = lang;
@@ -1226,6 +1257,7 @@
       updateToggleLabel();
       updateProgress();
       applyLiPrices();
+      renderFx();
     }
 
     langToggle.addEventListener('click', () => {
@@ -1279,6 +1311,7 @@
     let savedLang = 'en';
     try { savedLang = localStorage.getItem('china-reise-lang') || 'en'; } catch (e) {}
     setLang(savedLang);
+    loadFx();
 
     // ---- Übersichtskarte Shenzhen & Hongkong ----
     const SPOTS = [
