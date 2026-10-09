@@ -323,6 +323,7 @@
     .map-body { display: flex; gap: 12px; align-items: stretch; }
     .map-body .map-chips { flex-direction: column; flex-wrap: nowrap; overflow-y: auto; max-height: 460px; margin: 0; flex: 0 0 auto; padding-right: 2px; }
     .map-body #map { flex: 1 1 auto; min-width: 0; }
+    .fx-hero { font-size: .8rem; opacity: .78; margin: 10px 0 0; }
     #map { height:460px; border-radius:var(--radius-md); box-shadow:var(--shadow); z-index:0; }
     .map-chips { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 14px; }
     .map-chip {
@@ -431,6 +432,7 @@
           </div>
           <div id="map"></div>
           </div>
+          <p class="fx-hero" id="fx-hero"></p>
           <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
           <p class="route-note" data-i18n="routeNote">* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).</p>
@@ -1215,17 +1217,25 @@
 
     let fxData = null;
     function renderFx() {
-      const el = document.getElementById('fx-live');
-      if (!el) return;
       const loc = currentLang === 'de' ? 'de-DE' : 'en-US';
-      if (!fxData) { el.textContent = I18N[currentLang].fxLoading; return; }
+      const budgetEl = document.getElementById('fx-live');
+      const heroEl = document.getElementById('fx-hero');
+      if (!fxData) {
+        const t = I18N[currentLang].fxLoading;
+        if (budgetEl) budgetEl.textContent = t;
+        if (heroEl) heroEl.textContent = t;
+        return;
+      }
       const cny = fxData.rates.CNY, hkd = fxData.rates.HKD;
       const f2 = n => n.toLocaleString(loc, {minimumFractionDigits: 2, maximumFractionDigits: 2});
       const f3 = n => n.toLocaleString(loc, {minimumFractionDigits: 3, maximumFractionDigits: 3});
       const date = new Date(fxData.date + 'T12:00:00').toLocaleDateString(loc);
-      el.textContent = currentLang === 'de'
+      if (budgetEl) budgetEl.textContent = currentLang === 'de'
         ? '\u{1F4B1} Live (EZB, ' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
         : '\u{1F4B1} Live (ECB, ' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
+      if (heroEl) heroEl.textContent = currentLang === 'de'
+        ? 'Aktueller Wechselkurs (EZB, ' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
+        : 'Current exchange rate (ECB, ' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
     }
     function loadFx() {
       renderFx();
@@ -1233,8 +1243,11 @@
         .then(r => { if (!r.ok) throw 0; return r.json(); })
         .then(d => { fxData = d; renderFx(); })
         .catch(() => {
-          const el = document.getElementById('fx-live');
-          if (el && !fxData) el.textContent = I18N[currentLang].fxOffline;
+          const t = I18N[currentLang].fxOffline;
+          const b = document.getElementById('fx-live');
+          const h = document.getElementById('fx-hero');
+          if (b && !fxData) b.textContent = t;
+          if (h && !fxData) h.textContent = t;
         });
     }
 
