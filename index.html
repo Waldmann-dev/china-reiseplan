@@ -323,7 +323,11 @@
     .hero .map-panel { background: #152b27; }
     .hero .map-panel .panel-top h3 { color: var(--bg); }
     .hero .map-panel .map-note { color: #9db3a9; }
-    .hero .map-panel .fx-hero { color: #d8ddd6; }
+    .hero .map-panel .fx-hero { margin: 12px 0 0; }
+    .fx-cards { display: flex; flex-wrap: wrap; gap: 8px; }
+    .fx-card { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); border-radius: 999px; padding: 7px 14px; font-size: .92rem; color: #edf1ea; white-space: nowrap; }
+    .fx-card b { font-weight: 800; }
+    .fx-cap { margin-top: 7px; font-size: .8rem; color: #9db3a9; }
     .hero .map-panel .map-chip.active { background: var(--jade); border-color: var(--jade); color: #fff; }
     .map-body { display: flex; gap: 12px; align-items: stretch; }
     .map-body .map-chips { flex-direction: column; flex-wrap: nowrap; overflow-y: auto; max-height: 460px; margin: 0; flex: 0 0 auto; padding-right: 2px; }
@@ -418,7 +422,7 @@
         </div>
         <article class="panel map-panel">
           <div id="map"></div>
-          <p class="fx-hero" id="fx-hero"></p>
+          <div class="fx-hero" id="fx-hero"></div>
           <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
           <p class="route-note" data-i18n="routeNote">* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).</p>
@@ -1272,9 +1276,17 @@
       if (budgetEl) budgetEl.textContent = currentLang === 'de'
         ? '\u{1F4B1} Live (' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
         : '\u{1F4B1} Live (' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
-      if (heroEl) heroEl.textContent = currentLang === 'de'
-        ? 'Aktueller Wechselkurs (' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
-        : 'Current exchange rate (' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
+      if (heroEl) {
+        const deL = currentLang === 'de';
+        const oneE = deL ? '1 \u20AC' : '\u20AC1';
+        const oneH = deL ? '1 HK$' : 'HK$1';
+        heroEl.innerHTML =
+          '<div class="fx-cards">' +
+          '<span class="fx-card">\u{1F1EA}\u{1F1FA} <b>' + oneE + '</b> \u2192 <b>' + f2(cny) + ' \u00A5</b> \u{1F1E8}\u{1F1F3}</span>' +
+          '<span class="fx-card">\u{1F1EA}\u{1F1FA} <b>' + oneE + '</b> \u2192 <b>' + f2(hkd) + ' HK$</b> \u{1F1ED}\u{1F1F0}</span>' +
+          '<span class="fx-card">\u{1F1ED}\u{1F1F0} <b>' + oneH + '</b> \u2192 <b>' + f3(cny / hkd) + ' \u00A5</b> \u{1F1E8}\u{1F1F3}</span>' +
+          '</div><div class="fx-cap">' + (deL ? 'Aktueller Wechselkurs' : 'Current exchange rate') + ' \u00B7 ' + date + '</div>';
+      }
     }
     function loadFx() {
       renderFx();
@@ -1415,7 +1427,7 @@
       { d:'9.11.', n:'Monster Building', lat:22.2857, lng:114.2147 },
       { d:'9.11.', n:'HKG Airport', lat:22.3080, lng:113.9145 },
       { d:'10.11.', n:'Hong Kong Airport (HKG)', lat:22.3080, lng:113.9185 },
-      { d:'10.11.', n:'Munich Airport (MUC)', lat:48.3538, lng:11.7861 }
+      { d:'10.11.', n:'Munich Airport (MUC)', lat:48.3538, lng:11.7861, hero:false }
     ];
     let map = null, mapMarkers = [];
 
