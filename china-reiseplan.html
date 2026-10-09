@@ -321,6 +321,14 @@
     .check-item:has(input:focus-visible) { outline:2px solid var(--gold); outline-offset:4px; border-radius:4px; }
     .pack-group { font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:24px 0 2px; }
     .pack-group:first-child { margin-top:0; }
+    .cook-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; }
+    .cook-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+    .cook-rank { display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--ink); color:var(--bg); font-weight:800; font-size:.85rem; }
+    .cook-city { font-size:.72rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+    .cook h3 { font-size:1.02rem; margin:0 0 6px; }
+    .cook-price { font-weight:800; color:var(--red); margin-bottom:8px; }
+    .cook-verdict { margin:20px 2px 8px; font-size:.92rem; }
+    .cook-note { margin:0 2px; font-size:.88rem; color:var(--muted); }
     .check-copy strong { display:block; color:var(--red); }
     .footer { margin-top:54px; padding:24px 0 calc(10px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); color:var(--muted); font-size:.78rem; display:flex; justify-content:space-between; gap:20px; }
     .footer b { color:var(--ink); }
@@ -407,7 +415,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
     </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
-      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a>
+      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a>
     </nav>
 
     <section id="reise">
@@ -588,6 +596,86 @@
       </div>
     </section>
 
+    <section id="kochkurse">
+      <div class="section-head"><div><span class="section-num">07</span><h2 data-i18n="sec7h">Kochkurse</h2><p data-i18n="sec7sub">8 herzhafte Kurse in Peking & Hongkong – recherchiert am 27.09.2026, Preise können variieren.</p></div></div>
+      <div class="cook-grid">
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">1</span><span class="cook-city" data-i18n="cookCityBj">Peking</span></div>
+          <h3>Happy Panda – Dumpling Workshop</h3>
+          <div class="cook-price" data-i18n="ck1price">US$35 · ca. 30 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck1desc">Dumplings von Grund auf (Teig, Füllung, 3 Garmethoden) + Kung Pao Chicken, Tomate mit Ei, Tee & Dessert. 3 Std., Start 16:30, kleine Gruppe, Englisch.</li>
+            <li data-i18n="ck1book">Buchung: Viator (Mobilticket, 24h stornierbar)</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">2</span><span class="cook-city" data-i18n="cookCityHk">Hongkong</span></div>
+          <h3>Maxim's Dim Sum Academy</h3>
+          <div class="cook-price" data-i18n="ck2price">450 HK$ · ca. 50 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck2desc">2 kantonesische Dim Sum aus über 20 Sorten, ca. 2 Std., mind. 8 Personen. MOKO, Mong Kok. Englisch auf Anfrage.</li>
+            <li data-i18n="ck2book">Buchung: Klook, danach Termin bei Maxim's (+852 2628 9668)</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">3</span><span class="cook-city" data-i18n="cookCityBj">Peking</span></div>
+          <h3>China's Favourite Street Food – Jian Bing</h3>
+          <div class="cook-price" data-i18n="ck3price">US$55 · ca. 47 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck3desc">Pekinger Streetfood-Crêpe komplett selbst zubereiten, private Gruppe, ca. 1,5 Std., Englisch.</li>
+            <li data-i18n="ck3book">Buchung: Priceline / Viator</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">4</span><span class="cook-city" data-i18n="cookCityBj">Peking</span></div>
+          <h3>Spring Festival Dumpling Class</h3>
+          <div class="cook-price" data-i18n="ck4price">ab 40 £ · ca. 47 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck4desc">15 gebratene Dumplings + 2 Gemüsegerichte, kleine Gruppe im Hutong-Hof, Gastgeberin Mengrong Li, Englisch.</li>
+            <li data-i18n="ck4book">Buchung: GetYourGuide (24h stornierbar)</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">5</span><span class="cook-city" data-i18n="cookCityBj">Peking</span></div>
+          <h3>Dana – Courtyard Dumpling Class</h3>
+          <div class="cook-price" data-i18n="ck5price">US$40–45 · ca. 34–38 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck5desc">Dumpling-Kurs im privaten Hof-Café, 3 Std., privat oder kleine Gruppe, Englisch.</li>
+            <li data-i18n="ck5book">Buchung: Viator / Tripadvisor</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">6</span><span class="cook-city" data-i18n="cookCityHk">Hongkong</span></div>
+          <h3>Yum Cha – Dim-Sum-Workshop</h3>
+          <div class="cook-price" data-i18n="ck6price">550 HK$ · ca. 60 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck6desc">Siu Mai & Custard Buns selbst machen + Dim-Sum-Set, ca. 2 Std., 8–20 Personen, Central.</li>
+            <li data-i18n="ck6book">Buchung: Tel. +(852) 3708 8081 / central@yumchahk.com</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">7</span><span class="cook-city" data-i18n="cookCityHk">Hongkong</span></div>
+          <h3>Feliz Yau – Dumplings, Xiaolongbao & Markt</h3>
+          <div class="cook-price" data-i18n="ck7price">US$92–125 · ca. 78–106 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck7desc">Bio-Dumplings + Xiaolongbao + Nassmarkt-Rundgang, 3,5–4 Std., Englisch, vegan möglich.</li>
+            <li data-i18n="ck7book">Buchung: airKitchen / Viator</li>
+          </ul>
+        </article>
+        <article class="panel cook">
+          <div class="cook-top"><span class="cook-rank">8</span><span class="cook-city" data-i18n="cookCityHk">Hongkong</span></div>
+          <h3>Pots n Pans – Drei-Gänge-Kochkurs</h3>
+          <div class="cook-price" data-i18n="ck8price">US$152 · ca. 129 €</div>
+          <ul class="hotel-details">
+            <li data-i18n="ck8desc">Vollständiges Menü (Hot-and-Sour-Suppe, Gongbao Chicken, Fried Rice/Nudeln u.v.m.) + Marktbesuch, 4–4,5 Std., Englisch.</li>
+            <li data-i18n="ck8book">Buchung: Cookly / Viator</li>
+          </ul>
+        </article>
+      </div>
+      <p class="cook-verdict" data-i18n="cookVerdict"><strong>Fazit:</strong> Für ein richtiges Gericht statt nur Dumplings – Jian Bing (Peking, günstigste Option), Pots n Pans (Hongkong, vollständigstes Menü, ~129 €). Happy Panda ist der beste Kompromiss aus Preis und Umfang.</p>
+      <p class="cook-note"><span data-i18n="cookNote">Alle Details mit Buchungslinks:</span> <a href="https://muse.ai/s/kochkurse-peking-hongkong-xkt5xwxvmxlmu8s" target="_blank" rel="noopener" data-i18n="cookNoteLink">Kochkurs-Vergleich öffnen</a></p>
+    </section>
+
     <footer class="footer"><span><b data-i18n="footerDate">Planungsstand 06.10.2026</b></span><span data-i18n="footerNote">Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
 
@@ -603,7 +691,7 @@
         svgStart: `Start &amp; Ziel`, svgBj: `3 Nächte*`, svgSz: `2 Nächte`, svgHk: `3 Nächte`, svgLayover: `Umstieg`,
         routeNote: `* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).`,
         warnBanner: `⚠️ <strong>Achtung Flugbuchung:</strong> Das gebuchte Ticket (PGZN5K) geht nach <strong>Hongkong</strong> (Ankunft Fr, 30.10., 16:45 Uhr) – Peking ist nur ca. 8 Stunden Umsteigehalt. Der geplante mehrtägige Peking-Aufenthalt (30.10.–2.11.) widerspricht dem Ticket – Klärung noch offen. Optionen: Ticket ändern, oder in Peking nur mit Handgepäck aussteigen („Hidden-City“) – mit dem Risiko, dass das Aufgabegepäck nach Hongkong weiterfliegt und es gegen die Airline-Bedingungen verstößt.`,
-        navRoute: `Route`, navDays: `Tage`, navBudget: `Budget`, navTips: `Tipps`, navTodos: `To-dos`, navPack: `Packliste`,
+        navRoute: `Route`, navDays: `Tage`, navBudget: `Budget`, navTips: `Tipps`, navTodos: `To-dos`, navPack: `Packliste`, navCook: `Kochkurse`,
         sec6h: `Packliste`, sec6sub: `Was in den Koffer kommt – nach Stadt und Wetter sortiert.`,
         packGeneralH: `Allgemein – Dokumente, Technik & Geld`,
         pg1: `Reisepass (+ Kopie als Foto/Scan dabei)`, pg2: `Stromreiseadapter universal (Festland Typ A/C/I · Hongkong Typ G)`, pg3: `Powerbank + Ladekabel`, pg4: `Kopfhörer, Nackenkissen, Schlafmaske, Ohrstöpsel (21 Std. Flug)`, pg5: `Kreditkarte + etwas Bargeld (RMB & HKD)`, pg6: `Reiseapotheke: Pflaster, Schmerzmittel, persönliche Medikamente`, pg7: `Reiseversicherung (Police als Kopie)`,
@@ -615,6 +703,18 @@
         ps1: `Kurze Hosen`, ps2: `Leichte Jacke (Klimaanlagen!)`, ps3: `Bequeme Schuhe`,
         packHkH: `Hongkong · 5.–9.11. (mild, ca. 18–26 °C)`,
         ph1: `Feste Schuhe / Wanderschuhe (Dragon's Back: 8,5 km)`, ph2: `Schwimmsachen (Strand / Pool)`, ph3: `Cappy`, ph4: `Sonnencreme & Sonnenbrille`, ph5: `Leichte Regenjacke (optional)`, ph6: `Tagesrucksack & Trinkflasche`,
+        sec7h: `Kochkurse`, sec7sub: `8 herzhafte Kurse in Peking & Hongkong – recherchiert am 27.09.2026, Preise können variieren.`,
+        cookCityBj: `Peking`, cookCityHk: `Hongkong`,
+        ck1price: `US$35 · ca. 30 €`, ck1desc: `Dumplings von Grund auf (Teig, Füllung, 3 Garmethoden) + Kung Pao Chicken, Tomate mit Ei, Tee & Dessert. 3 Std., Start 16:30, kleine Gruppe, Englisch.`, ck1book: `Buchung: Viator (Mobilticket, 24h stornierbar)`,
+        ck2price: `450 HK$ · ca. 50 €`, ck2desc: `2 kantonesische Dim Sum aus über 20 Sorten, ca. 2 Std., mind. 8 Personen. MOKO, Mong Kok. Englisch auf Anfrage.`, ck2book: `Buchung: Klook, danach Termin bei Maxim's (+852 2628 9668)`,
+        ck3price: `US$55 · ca. 47 €`, ck3desc: `Pekinger Streetfood-Crêpe komplett selbst zubereiten, private Gruppe, ca. 1,5 Std., Englisch.`, ck3book: `Buchung: Priceline / Viator`,
+        ck4price: `ab 40 £ · ca. 47 €`, ck4desc: `15 gebratene Dumplings + 2 Gemüsegerichte, kleine Gruppe im Hutong-Hof, Gastgeberin Mengrong Li, Englisch.`, ck4book: `Buchung: GetYourGuide (24h stornierbar)`,
+        ck5price: `US$40–45 · ca. 34–38 €`, ck5desc: `Dumpling-Kurs im privaten Hof-Café, 3 Std., privat oder kleine Gruppe, Englisch.`, ck5book: `Buchung: Viator / Tripadvisor`,
+        ck6price: `550 HK$ · ca. 60 €`, ck6desc: `Siu Mai & Custard Buns selbst machen + Dim-Sum-Set, ca. 2 Std., 8–20 Personen, Central.`, ck6book: `Buchung: Tel. +(852) 3708 8081 / central@yumchahk.com`,
+        ck7price: `US$92–125 · ca. 78–106 €`, ck7desc: `Bio-Dumplings + Xiaolongbao + Nassmarkt-Rundgang, 3,5–4 Std., Englisch, vegan möglich.`, ck7book: `Buchung: airKitchen / Viator`,
+        ck8price: `US$152 · ca. 129 €`, ck8desc: `Vollständiges Menü (Hot-and-Sour-Suppe, Gongbao Chicken, Fried Rice/Nudeln u.v.m.) + Marktbesuch, 4–4,5 Std., Englisch.`, ck8book: `Buchung: Cookly / Viator`,
+        cookVerdict: `<strong>Fazit:</strong> Für ein richtiges Gericht statt nur Dumplings – Jian Bing (Peking, günstigste Option), Pots n Pans (Hongkong, vollständigstes Menü, ~129 €). Happy Panda ist der beste Kompromiss aus Preis und Umfang.`,
+        cookNote: `Alle Details mit Buchungslinks:`, cookNoteLink: `Kochkurs-Vergleich öffnen`,
         langToggleAria: `Sprache wechseln`,
         ariaFacts: `Reise-Eckdaten`,
         ariaQuicknav: `Schnellnavigation`,
@@ -761,7 +861,7 @@
         svgStart: `Start &amp; end`, svgBj: `3 nights*`, svgSz: `2 nights`, svgHk: `3 nights`, svgLayover: `Layover`,
         routeNote: `* Beijing stay still to be confirmed (see note below).`,
         warnBanner: `⚠️ <strong>Flight booking alert:</strong> The booked ticket (PGZN5K) goes to <strong>Hong Kong</strong> (arrival Fri, Oct 30, 4:45 PM) – Beijing is only an approx. 8-hour layover. The planned multi-day Beijing stay (Oct 30 – Nov 2) contradicts the ticket – still to be clarified. Options: change the ticket, or get off in Beijing with hand luggage only ("hidden city") – at the risk that checked baggage continues to Hong Kong and that this violates the airline's conditions.`,
-        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`, navPack: `Packing list`,
+        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`, navPack: `Packing list`, navCook: `Cooking classes`,
         sec6h: `Packing list`, sec6sub: `What goes in the suitcase – sorted by city and weather.`,
         packGeneralH: `General – documents, tech & money`,
         pg1: `Passport (+ photo/scan copy)`, pg2: `Universal travel adapter (mainland Type A/C/I · Hong Kong Type G)`, pg3: `Power bank + charging cables`, pg4: `Headphones, neck pillow, sleep mask, earplugs (21-hour flight)`, pg5: `Credit card + some cash (RMB & HKD)`, pg6: `First-aid kit: plasters, painkillers, personal medication`, pg7: `Travel insurance (policy copy)`,
@@ -773,6 +873,18 @@
         ps1: `Shorts`, ps2: `Light jacket (air conditioning!)`, ps3: `Comfortable shoes`,
         packHkH: `Hong Kong · Nov 5–9 (mild, approx. 18–26 °C)`,
         ph1: `Sturdy / hiking shoes (Dragon's Back: 8.5 km)`, ph2: `Swimwear (beach / pool)`, ph3: `Cap`, ph4: `Sunscreen & sunglasses`, ph5: `Light rain jacket (optional)`, ph6: `Daypack & water bottle`,
+        sec7h: `Cooking classes`, sec7sub: `8 savory courses in Beijing & Hong Kong – researched 27/09/2026, prices may vary.`,
+        cookCityBj: `Beijing`, cookCityHk: `Hong Kong`,
+        ck1price: `US$35 · approx. €30`, ck1desc: `Dumplings from scratch (dough, filling, 3 cooking methods) + Kung Pao Chicken, tomato with egg, tea & dessert. 3 hrs, starts 4:30 PM, small group, English.`, ck1book: `Booking: Viator (mobile ticket, free cancellation 24h)`,
+        ck2price: `HK$450 · approx. €50`, ck2desc: `2 Cantonese dim sum from 20+ varieties, ~2 hrs, min. 8 people. MOKO, Mong Kok. English on request.`, ck2book: `Booking: Klook, then schedule with Maxim's (+852 2628 9668)`,
+        ck3price: `US$55 · approx. €47`, ck3desc: `Make Beijing's street-food crêpe from scratch, private group, ~1.5 hrs, English.`, ck3book: `Booking: Priceline / Viator`,
+        ck4price: `from £40 · approx. €47`, ck4desc: `15 pan-fried dumplings + 2 veggie dishes, small group in a hutong courtyard, host Mengrong Li, English.`, ck4book: `Booking: GetYourGuide (free cancellation 24h)`,
+        ck5price: `US$40–45 · approx. €34–38`, ck5desc: `Dumpling class in a private courtyard café, 3 hrs, private or small group, English.`, ck5book: `Booking: Viator / Tripadvisor`,
+        ck6price: `HK$550 · approx. €60`, ck6desc: `Make siu mai & custard buns + dim sum set, ~2 hrs, 8–20 people, Central.`, ck6book: `Booking: +(852) 3708 8081 / central@yumchahk.com`,
+        ck7price: `US$92–125 · approx. €78–106`, ck7desc: `Organic dumplings + xiaolongbao + wet-market tour, 3.5–4 hrs, English, vegan possible.`, ck7book: `Booking: airKitchen / Viator`,
+        ck8price: `US$152 · approx. €129`, ck8desc: `Full menu (hot-and-sour soup, gongbao chicken, fried rice/noodles & more) + market tour, 4–4.5 hrs, English.`, ck8book: `Booking: Cookly / Viator`,
+        cookVerdict: `<strong>Verdict:</strong> For a real dish instead of just dumplings – Jian Bing (Beijing, cheapest option), Pots n Pans (Hong Kong, most complete menu, ~€129). Happy Panda is the best price-to-content compromise.`,
+        cookNote: `Full details with booking links:`, cookNoteLink: `Open cooking class comparison`,
         langToggleAria: `Switch language`,
         ariaFacts: `Trip key facts`,
         ariaQuicknav: `Quick navigation`,
