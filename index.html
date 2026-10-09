@@ -320,6 +320,11 @@
     .pack-note { font-size:.86rem; color:var(--muted); margin:8px 0 0; padding:10px 12px; background:#f3f7f4; border-left:3px solid var(--green); border-radius:0 8px 8px 0; }
     .cook-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; }
     .map-panel { padding: 20px; border: 2px solid var(--jade); }
+    .hero .map-panel { background: #152b27; }
+    .hero .map-panel .panel-top h3 { color: var(--bg); }
+    .hero .map-panel .map-note { color: #9db3a9; }
+    .hero .map-panel .fx-hero { color: #d8ddd6; }
+    .hero .map-panel .map-chip.active { background: var(--jade); border-color: var(--jade); color: #fff; }
     .map-body { display: flex; gap: 12px; align-items: stretch; }
     .map-body .map-chips { flex-direction: column; flex-wrap: nowrap; overflow-y: auto; max-height: 460px; margin: 0; flex: 0 0 auto; padding-right: 2px; }
     .map-body #map { flex: 1 1 auto; min-width: 0; }
@@ -1386,7 +1391,7 @@
         el.innerHTML = '<p class="map-fallback">' + I18N[currentLang].mapOffline + '</p>';
         return;
       }
-      map = L.map('map').setView([22.36, 114.10], 10);
+      map = L.map('map');
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -1397,6 +1402,12 @@
         m.addTo(map);
         return m;
       });
+      fitAllSpots();
+      setTimeout(() => { try { map.invalidateSize(); fitAllSpots(); } catch (e) {} }, 600);
+    }
+    function fitAllSpots() {
+      if (!map || !mapMarkers.length) return;
+      map.fitBounds(L.latLngBounds(mapMarkers.map(m => m.getLatLng())).pad(0.12));
     }
     document.querySelectorAll('.map-chip').forEach(chip => chip.addEventListener('click', () => {
       document.querySelectorAll('.map-chip').forEach(c => c.classList.remove('active'));
@@ -1409,7 +1420,7 @@
         if (vis) { m.addTo(map); shown.push(m.getLatLng()); }
         else { map.removeLayer(m); }
       });
-      if (f === 'all') map.setView([22.36, 114.10], 10);
+      if (f === 'all') fitAllSpots();
       else if (shown.length) map.fitBounds(L.latLngBounds(shown).pad(0.25));
     }));
     initMap();
