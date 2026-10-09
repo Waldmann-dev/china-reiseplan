@@ -319,6 +319,8 @@
     .box { display:none; }
     .check-item input:checked ~ .check-copy { color:var(--muted); text-decoration:line-through; text-decoration-thickness:1px; }
     .check-item:has(input:focus-visible) { outline:2px solid var(--gold); outline-offset:4px; border-radius:4px; }
+    .pack-group { font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:24px 0 2px; }
+    .pack-group:first-child { margin-top:0; }
     .check-copy strong { display:block; color:var(--red); }
     .footer { margin-top:54px; padding:24px 0 calc(10px + env(safe-area-inset-bottom)); border-top:1px solid var(--line); color:var(--muted); font-size:.78rem; display:flex; justify-content:space-between; gap:20px; }
     .footer b { color:var(--ink); }
@@ -405,7 +407,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
     </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
-      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a>
+      <a href="#reise" data-i18n="navRoute">Route</a><a href="#tage" data-i18n="navDays">Tage</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a>
     </nav>
 
     <section id="reise">
@@ -539,6 +541,53 @@
       </div>
     </section>
 
+    <section id="packliste">
+      <div class="section-head"><div><span class="section-num">06</span><h2 data-i18n="sec6h">Packliste</h2><p data-i18n="sec6sub">Was in den Koffer kommt – nach Stadt und Wetter sortiert.</p></div></div>
+      <div class="panel">
+        <h4 class="pack-group" data-i18n="packGeneralH">Allgemein – Dokumente, Technik & Geld</h4>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg1">Reisepass (+ Kopie als Foto/Scan dabei)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg2">Stromreiseadapter universal (Festland Typ A/C/I · Hongkong Typ G)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg3">Powerbank + Ladekabel</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg4">Kopfhörer, Nackenkissen, Schlafmaske, Ohrstöpsel (21 Std. Flug)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg5">Kreditkarte + etwas Bargeld (RMB & HKD)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg6">Reiseapotheke: Pflaster, Schmerzmittel, persönliche Medikamente</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pg7">Reiseversicherung (Police als Kopie)</span></label>
+        </div>
+        <h4 class="pack-group" data-i18n="packClothH">Kleidung – 13 Tage</h4>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc1">Unterwäsche & Socken für 13 Tage (oder unterwegs waschen)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc2">Schlafanzug</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc3">T-Shirts</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc4">Lange Hosen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc5">1 schickere Garnitur (Aqua / OZONE Bar – Dresscode)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pc6">Mikrofaserhandtuch</span></label>
+        </div>
+        <h4 class="pack-group" data-i18n="packBjH">Peking · 30.10.–2.11. (kalt, ca. 0–12 °C)</h4>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pb1">Warme Jacke (Übergangs-/Winterjacke)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pb2">Pullover / Fleece – im Zwiebellook</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pb3">Schal, Mütze & Handschuhe (morgens/abends)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="pb4">Warme, bequeme Schuhe (viel Gehen)</span></label>
+        </div>
+        <h4 class="pack-group" data-i18n="packSzH">Shenzhen · 2.–5.11. (mild, ca. 18–26 °C)</h4>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ps1">Kurze Hosen</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ps2">Leichte Jacke (Klimaanlagen!)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ps3">Bequeme Schuhe</span></label>
+        </div>
+        <h4 class="pack-group" data-i18n="packHkH">Hongkong · 5.–9.11. (mild, ca. 18–26 °C)</h4>
+        <div class="check-list">
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph1">Feste Schuhe / Wanderschuhe (Dragon's Back: 8,5 km)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph2">Schwimmsachen (Strand / Pool)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph3">Cappy</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph4">Sonnencreme & Sonnenbrille</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph5">Leichte Regenjacke (optional)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="box"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9" stroke="currentColor" stroke-width="2.5"/></svg></span><span class="check-copy" data-i18n="ph6">Tagesrucksack & Trinkflasche</span></label>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer"><span><b data-i18n="footerDate">Planungsstand 06.10.2026</b></span><span data-i18n="footerNote">Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
 
@@ -554,7 +603,18 @@
         svgStart: `Start &amp; Ziel`, svgBj: `3 Nächte*`, svgSz: `2 Nächte`, svgHk: `3 Nächte`, svgLayover: `Umstieg`,
         routeNote: `* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).`,
         warnBanner: `⚠️ <strong>Achtung Flugbuchung:</strong> Das gebuchte Ticket (PGZN5K) geht nach <strong>Hongkong</strong> (Ankunft Fr, 30.10., 16:45 Uhr) – Peking ist nur ca. 8 Stunden Umsteigehalt. Der geplante mehrtägige Peking-Aufenthalt (30.10.–2.11.) widerspricht dem Ticket – Klärung noch offen. Optionen: Ticket ändern, oder in Peking nur mit Handgepäck aussteigen („Hidden-City“) – mit dem Risiko, dass das Aufgabegepäck nach Hongkong weiterfliegt und es gegen die Airline-Bedingungen verstößt.`,
-        navRoute: `Route`, navDays: `Tage`, navBudget: `Budget`, navTips: `Tipps`, navTodos: `To-dos`,
+        navRoute: `Route`, navDays: `Tage`, navBudget: `Budget`, navTips: `Tipps`, navTodos: `To-dos`, navPack: `Packliste`,
+        sec6h: `Packliste`, sec6sub: `Was in den Koffer kommt – nach Stadt und Wetter sortiert.`,
+        packGeneralH: `Allgemein – Dokumente, Technik & Geld`,
+        pg1: `Reisepass (+ Kopie als Foto/Scan dabei)`, pg2: `Stromreiseadapter universal (Festland Typ A/C/I · Hongkong Typ G)`, pg3: `Powerbank + Ladekabel`, pg4: `Kopfhörer, Nackenkissen, Schlafmaske, Ohrstöpsel (21 Std. Flug)`, pg5: `Kreditkarte + etwas Bargeld (RMB & HKD)`, pg6: `Reiseapotheke: Pflaster, Schmerzmittel, persönliche Medikamente`, pg7: `Reiseversicherung (Police als Kopie)`,
+        packClothH: `Kleidung – 13 Tage`,
+        pc1: `Unterwäsche & Socken für 13 Tage (oder unterwegs waschen)`, pc2: `Schlafanzug`, pc3: `T-Shirts`, pc4: `Lange Hosen`, pc5: `1 schickere Garnitur (Aqua / OZONE Bar – Dresscode)`, pc6: `Mikrofaserhandtuch`,
+        packBjH: `Peking · 30.10.–2.11. (kalt, ca. 0–12 °C)`,
+        pb1: `Warme Jacke (Übergangs-/Winterjacke)`, pb2: `Pullover / Fleece – im Zwiebellook`, pb3: `Schal, Mütze & Handschuhe (morgens/abends)`, pb4: `Warme, bequeme Schuhe (viel Gehen)`,
+        packSzH: `Shenzhen · 2.–5.11. (mild, ca. 18–26 °C)`,
+        ps1: `Kurze Hosen`, ps2: `Leichte Jacke (Klimaanlagen!)`, ps3: `Bequeme Schuhe`,
+        packHkH: `Hongkong · 5.–9.11. (mild, ca. 18–26 °C)`,
+        ph1: `Feste Schuhe / Wanderschuhe (Dragon's Back: 8,5 km)`, ph2: `Schwimmsachen (Strand / Pool)`, ph3: `Cappy`, ph4: `Sonnencreme & Sonnenbrille`, ph5: `Leichte Regenjacke (optional)`, ph6: `Tagesrucksack & Trinkflasche`,
         langToggleAria: `Sprache wechseln`,
         ariaFacts: `Reise-Eckdaten`,
         ariaQuicknav: `Schnellnavigation`,
@@ -701,7 +761,18 @@
         svgStart: `Start &amp; end`, svgBj: `3 nights*`, svgSz: `2 nights`, svgHk: `3 nights`, svgLayover: `Layover`,
         routeNote: `* Beijing stay still to be confirmed (see note below).`,
         warnBanner: `⚠️ <strong>Flight booking alert:</strong> The booked ticket (PGZN5K) goes to <strong>Hong Kong</strong> (arrival Fri, Oct 30, 4:45 PM) – Beijing is only an approx. 8-hour layover. The planned multi-day Beijing stay (Oct 30 – Nov 2) contradicts the ticket – still to be clarified. Options: change the ticket, or get off in Beijing with hand luggage only ("hidden city") – at the risk that checked baggage continues to Hong Kong and that this violates the airline's conditions.`,
-        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`,
+        navRoute: `Route`, navDays: `Days`, navBudget: `Budget`, navTips: `Tips`, navTodos: `To-dos`, navPack: `Packing list`,
+        sec6h: `Packing list`, sec6sub: `What goes in the suitcase – sorted by city and weather.`,
+        packGeneralH: `General – documents, tech & money`,
+        pg1: `Passport (+ photo/scan copy)`, pg2: `Universal travel adapter (mainland Type A/C/I · Hong Kong Type G)`, pg3: `Power bank + charging cables`, pg4: `Headphones, neck pillow, sleep mask, earplugs (21-hour flight)`, pg5: `Credit card + some cash (RMB & HKD)`, pg6: `First-aid kit: plasters, painkillers, personal medication`, pg7: `Travel insurance (policy copy)`,
+        packClothH: `Clothing – 13 days`,
+        pc1: `Underwear & socks for 13 days (or wash on the go)`, pc2: `Sleepwear`, pc3: `T-shirts`, pc4: `Long trousers`, pc5: `1 smarter outfit (Aqua / OZONE bar – dress code)`, pc6: `Microfibre towel`,
+        packBjH: `Beijing · Oct 30 – Nov 2 (cold, approx. 0–12 °C)`,
+        pb1: `Warm jacket`, pb2: `Sweater / fleece – layer up`, pb3: `Scarf, beanie & gloves (mornings/evenings)`, pb4: `Warm, comfortable shoes (lots of walking)`,
+        packSzH: `Shenzhen · Nov 2–5 (mild, approx. 18–26 °C)`,
+        ps1: `Shorts`, ps2: `Light jacket (air conditioning!)`, ps3: `Comfortable shoes`,
+        packHkH: `Hong Kong · Nov 5–9 (mild, approx. 18–26 °C)`,
+        ph1: `Sturdy / hiking shoes (Dragon's Back: 8.5 km)`, ph2: `Swimwear (beach / pool)`, ph3: `Cap`, ph4: `Sunscreen & sunglasses`, ph5: `Light rain jacket (optional)`, ph6: `Daypack & water bottle`,
         langToggleAria: `Switch language`,
         ariaFacts: `Trip key facts`,
         ariaQuicknav: `Quick navigation`,
@@ -900,7 +971,7 @@
       updateToggleLabel();
     }));
 
-    const checks = [...document.querySelectorAll('.check-item input')];
+    const checks = [...document.querySelectorAll('#checkliste .check-item input')];
     const ring = document.querySelector('.ring-value');
     const progressText = document.getElementById('progress-text');
     const circumference = 194.78;
