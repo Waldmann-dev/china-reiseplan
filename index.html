@@ -323,7 +323,8 @@
     .hero .map-panel { background: #152b27; }
     .hero .map-panel .panel-top h3 { color: var(--bg); }
     .hero .map-panel .map-note { color: #9db3a9; }
-    .hero .map-panel .fx-hero { margin: 12px 0 0; }
+    .hero .fx-hero { margin: 14px 0 0; text-align: center; }
+    .hero .fx-hero .fx-cards { justify-content: center; }
     .fx-cards { display: flex; flex-wrap: wrap; gap: 8px; }
     .fx-card { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.13); border-radius: 999px; padding: 7px 14px; font-size: .92rem; color: #edf1ea; white-space: nowrap; }
     .fx-card b { font-weight: 800; }
@@ -421,10 +422,16 @@
           </div>
         </div>
         <article class="panel map-panel">
+          <div class="map-chips" role="group">
+            <button type="button" class="map-chip active" data-mapcity="all" data-i18n="chipAll">All</button>
+            <button type="button" class="map-chip" data-mapcity="beijing">Beijing</button>
+            <button type="button" class="map-chip" data-mapcity="shenzhen">Shenzhen</button>
+            <button type="button" class="map-chip" data-mapcity="hongkong">Hong Kong</button>
+          </div>
           <div id="map"></div>
-          <div class="fx-hero" id="fx-hero"></div>
           <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
+        <div class="fx-hero" id="fx-hero"></div>
           <p class="route-note" data-i18n="routeNote">* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).</p>
       </div>
     </header>
@@ -1430,6 +1437,7 @@
       { d:'10.11.', n:'Munich Airport (MUC)', lat:48.3538, lng:11.7861, hero:false }
     ];
     let map = null, mapMarkers = [];
+    const CITY_BY_DAY = { '30.10.':'beijing','31.10.':'beijing','1.11.':'beijing','2.11.':'beijing','3.11.':'shenzhen','4.11.':'shenzhen','5.11.':'hongkong','6.11.':'hongkong','7.11.':'hongkong','8.11.':'hongkong','9.11.':'hongkong' };
 
     function initMap() {
       const el = document.getElementById('map');
@@ -1445,6 +1453,7 @@
       mapMarkers = SPOTS.filter(s => s.hero !== false).map(s => {
         const m = L.marker([s.lat, s.lng]).bindPopup('<b>' + s.n + '</b><br>' + s.d);
         m.spotDay = s.d;
+        m.spotCity = CITY_BY_DAY[s.d] || 'other';
         m.addTo(map);
         return m;
       });
@@ -1459,15 +1468,14 @@
       document.querySelectorAll('.map-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       if (!map) return;
-      const f = chip.dataset.mapday;
+      const f = chip.dataset.mapcity;
       const shown = [];
       mapMarkers.forEach(m => {
-        const vis = f === 'all' || m.spotDay === f;
+        const vis = f === 'all' || m.spotCity === f;
         if (vis) { m.addTo(map); shown.push(m.getLatLng()); }
         else { map.removeLayer(m); }
       });
-      if (f === 'all') fitAllSpots();
-      else if (shown.length) map.fitBounds(L.latLngBounds(shown).pad(0.25));
+      if (shown.length) map.fitBounds(L.latLngBounds(shown).pad(0.12));
     }));
     initMap();
 
