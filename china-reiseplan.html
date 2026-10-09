@@ -1394,6 +1394,11 @@
       L.polyline(P(3, 1), flightDim).addTo(rm);
       L.polyline(P(1, 0), flightDim).addTo(rm);
       rm.fitBounds(L.latLngBounds(cities.map(c => [c.lat, c.lng])).pad(0.25));
+      // Tiles nach Layout-Settling neu anfordern (iOS lädt sonst nur halb)
+      const fixRouteSize = () => { try { rm.invalidateSize(); } catch (e) {} };
+      setTimeout(fixRouteSize, 400);
+      setTimeout(fixRouteSize, 1500);
+      window.addEventListener('load', () => setTimeout(fixRouteSize, 250));
     }
     function initMap() {
       const el = document.getElementById('map');
