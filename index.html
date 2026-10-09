@@ -144,6 +144,7 @@
     .route-title strong { font-size: 1rem; }
     .route-title span { color: #b9cdc4; font-size: .78rem; }
     #route-map { height: 300px; border-radius: 16px; z-index: 0; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    #route-map .leaflet-tile-pane { filter: invert(100%) hue-rotate(180deg) brightness(92%) contrast(88%); }
     #route-map .leaflet-popup-content { font-family: "Avenir Next", Avenir, sans-serif; }
     .route-note { margin: 10px 0 0; color: #b9cdc4; font-size: .72rem; }
     .plane { fill: #f0cc7b; }
@@ -1335,9 +1336,9 @@
       const el = document.getElementById('route-map');
       if (!window.L) { el.innerHTML = '<p class="map-fallback">' + I18N[currentLang].mapOffline + '</p>'; return; }
       const rm = L.map('route-map', { scrollWheelZoom: false }).setView([38, 70], 3);
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> © <a href="https://carto.com/attributions">CARTO</a>'
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(rm);
       const cities = [
         { n: 'München', sub: 'Start & Ziel', lat: 48.1351, lng: 11.5820 },
