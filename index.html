@@ -319,7 +319,15 @@
     .pack-group:first-child { margin-top:0; }
     .pack-note { font-size:.86rem; color:var(--muted); margin:8px 0 0; padding:10px 12px; background:#f3f7f4; border-left:3px solid var(--green); border-radius:0 8px 8px 0; }
     .cook-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:14px; }
-    .map-panel { padding: 20px; }
+    .map-panel { padding: 20px; border: 2px solid var(--jade); }
+    .map-body { display: flex; gap: 12px; align-items: stretch; }
+    .map-body .map-chips { flex-direction: column; flex-wrap: nowrap; overflow-y: auto; max-height: 460px; margin: 0; flex: 0 0 auto; padding-right: 2px; }
+    .map-body #map { flex: 1 1 auto; min-width: 0; }
+    @media (max-width: 820px) {
+      .map-body { flex-direction: column; }
+      .map-body .map-chips { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; max-height: none; margin: 0 0 10px; padding-bottom: 6px; }
+      .map-body .map-chips .map-chip { flex: 0 0 auto; }
+    }
     #map { height:460px; border-radius:var(--radius-md); box-shadow:var(--shadow); z-index:0; }
     .map-chips { display:flex; gap:6px; flex-wrap:wrap; margin:0 0 14px; }
     .map-chip {
@@ -409,6 +417,7 @@
         </div>
         <article class="panel map-panel">
           <div class="panel-top"><h3 data-i18n="mapHead">Karte · gesamte Reise</h3></div>
+          <div class="map-body">
           <div class="map-chips" role="group">
             <button class="map-chip active" data-mapday="all" type="button" data-i18n="chipAll">Alle</button>
             <button class="map-chip" data-mapday="29.10." type="button">29.10.</button>
@@ -426,6 +435,7 @@
             <button class="map-chip" data-mapday="10.11." type="button">10.11.</button>
           </div>
           <div id="map"></div>
+          </div>
           <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
           <p class="route-note" data-i18n="routeNote">* Peking-Aufenthalt noch zu klären (siehe Hinweis unten).</p>
