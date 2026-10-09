@@ -417,26 +417,7 @@
           </div>
         </div>
         <article class="panel map-panel">
-          <div class="panel-top"><h3 data-i18n="mapHead">Karte · gesamte Reise</h3></div>
-          <div class="map-body">
-          <div class="map-chips" role="group">
-            <button class="map-chip active" data-mapday="all" type="button" data-i18n="chipAll">Alle</button>
-            <button class="map-chip" data-mapday="29.10." type="button">29.10.</button>
-            <button class="map-chip" data-mapday="30.10." type="button">30.10.</button>
-            <button class="map-chip" data-mapday="31.10." type="button">31.10.</button>
-            <button class="map-chip" data-mapday="1.11." type="button">1.11.</button>
-            <button class="map-chip" data-mapday="2.11." type="button">2.11.</button>
-            <button class="map-chip" data-mapday="3.11." type="button">3.11.</button>
-            <button class="map-chip" data-mapday="4.11." type="button">4.11.</button>
-            <button class="map-chip" data-mapday="5.11." type="button">5.11.</button>
-            <button class="map-chip" data-mapday="6.11." type="button">6.11.</button>
-            <button class="map-chip" data-mapday="7.11." type="button">7.11.</button>
-            <button class="map-chip" data-mapday="8.11." type="button">8.11.</button>
-            <button class="map-chip" data-mapday="9.11." type="button">9.11.</button>
-            <button class="map-chip" data-mapday="10.11." type="button">10.11.</button>
-          </div>
           <div id="map"></div>
-          </div>
           <p class="fx-hero" id="fx-hero"></p>
           <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
@@ -1334,7 +1315,7 @@
 
     // ---- Übersichtskarte Shenzhen & Hongkong ----
     const SPOTS = [
-      { d:'29.10.', n:'Munich Airport (MUC)', lat:48.3538, lng:11.7861 },
+      { d:'29.10.', n:'Munich Airport (MUC)', lat:48.3538, lng:11.7861, hero:false },
       { d:'29.10.', n:'Beijing Capital Airport (PEK)', lat:40.0799, lng:116.6031 },
       { d:'30.10.', n:'IMMERSING Hotel', lat:39.8950, lng:116.4040 },
       { d:'30.10.', n:'Lama Temple (Yonghegong)', lat:39.9168, lng:116.4168 },
@@ -1396,7 +1377,7 @@
         maxZoom: 19,
         attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
-      mapMarkers = SPOTS.map(s => {
+      mapMarkers = SPOTS.filter(s => s.hero !== false).map(s => {
         const m = L.marker([s.lat, s.lng]).bindPopup('<b>' + s.n + '</b><br>' + s.d);
         m.spotDay = s.d;
         m.addTo(map);
