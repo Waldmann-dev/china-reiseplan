@@ -1213,19 +1213,20 @@
         return;
       }
       const cny = fxData.rates.CNY, hkd = fxData.rates.HKD;
+      if (!cny || !hkd) throw 0;
       const f2 = n => n.toLocaleString(loc, {minimumFractionDigits: 2, maximumFractionDigits: 2});
       const f3 = n => n.toLocaleString(loc, {minimumFractionDigits: 3, maximumFractionDigits: 3});
-      const date = new Date(fxData.date + 'T12:00:00').toLocaleDateString(loc);
+      const date = new Date(fxData.time_last_update_utc).toLocaleDateString(loc);
       if (budgetEl) budgetEl.textContent = currentLang === 'de'
-        ? '\u{1F4B1} Live (EZB, ' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
-        : '\u{1F4B1} Live (ECB, ' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
+        ? '\u{1F4B1} Live (' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
+        : '\u{1F4B1} Live (' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
       if (heroEl) heroEl.textContent = currentLang === 'de'
-        ? 'Aktueller Wechselkurs (EZB, ' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
-        : 'Current exchange rate (ECB, ' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
+        ? 'Aktueller Wechselkurs (' + date + '): 1 \u20AC = ' + f2(cny) + ' \u00A5 \u00B7 1 \u20AC = ' + f2(hkd) + ' HK$ \u00B7 1 HK$ = ' + f3(cny / hkd) + ' \u00A5'
+        : 'Current exchange rate (' + date + '): \u20AC1 = ' + f2(cny) + ' \u00A5 \u00B7 \u20AC1 = ' + f2(hkd) + ' HK$ \u00B7 HK$1 = ' + f3(cny / hkd) + ' \u00A5';
     }
     function loadFx() {
       renderFx();
-      fetch('https://api.frankfurter.app/latest?from=EUR&to=CNY,HKD')
+      fetch('https://open.er-api.com/v6/latest/EUR')
         .then(r => { if (!r.ok) throw 0; return r.json(); })
         .then(d => { fxData = d; renderFx(); })
         .catch(() => {
