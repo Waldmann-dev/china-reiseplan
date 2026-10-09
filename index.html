@@ -425,6 +425,31 @@
       <a href="#tage" data-i18n="navDays">Tage</a><a href="#reise" data-i18n="navFlights">Flüge & Zug</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#hotels" data-i18n="navHotels">Hotels</a>
     </nav>
 
+    <section id="karte">
+        <article class="panel map-panel">
+          <div class="panel-top"><h3 data-i18n="mapHead">Karte · gesamte Reise</h3></div>
+          <div class="map-chips" role="group">
+            <button class="map-chip active" data-mapday="all" type="button" data-i18n="chipAll">Alle</button>
+            <button class="map-chip" data-mapday="29.10." type="button">29.10.</button>
+            <button class="map-chip" data-mapday="30.10." type="button">30.10.</button>
+            <button class="map-chip" data-mapday="31.10." type="button">31.10.</button>
+            <button class="map-chip" data-mapday="1.11." type="button">1.11.</button>
+            <button class="map-chip" data-mapday="2.11." type="button">2.11.</button>
+            <button class="map-chip" data-mapday="3.11." type="button">3.11.</button>
+            <button class="map-chip" data-mapday="4.11." type="button">4.11.</button>
+            <button class="map-chip" data-mapday="5.11." type="button">5.11.</button>
+            <button class="map-chip" data-mapday="6.11." type="button">6.11.</button>
+            <button class="map-chip" data-mapday="7.11." type="button">7.11.</button>
+            <button class="map-chip" data-mapday="8.11." type="button">8.11.</button>
+            <button class="map-chip" data-mapday="9.11." type="button">9.11.</button>
+            <button class="map-chip" data-mapday="10.11." type="button">10.11.</button>
+          </div>
+          <div id="map"></div>
+          <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
+        </article>
+    </section>
+
+
     <section id="tage">
       <div class="section-head">
         <div><span class="section-num">01</span><h2 data-i18n="sec1h">Tag für Tag</h2><p data-i18n="sec1sub">Tippe auf einen Tag, um Details und Tagesbudget zu öffnen.</p></div>
@@ -467,27 +492,6 @@
             <div class="flight"><div class="flight-date" data-i18n="f3date">Do, 5.11.</div><div class="flight-route"><span class="flight-price" data-i18n="f3price">ca. ¥80 · 10 €</span><strong data-i18n="f3routeT">Shenzhen → Hongkong</strong><span data-i18n="f3routeS">Hochgeschwindigkeitszug · ca. 20 Min bis West Kowloon</span></div><span class="flight-no" data-i18n="f3badge">Zug</span></div>
             <div class="flight"><div class="flight-date" data-i18n="f4date">Mo, 9.11.</div><div class="flight-route"><span class="flight-price" data-i18n="f4price">302,69 €</span><strong data-i18n="f4routeT">Hongkong 20:20 → München 06:35</strong><span data-i18n="f4routeS">Ankunft Dienstag · via Peking (CA116 + CA961) · 1 Stopp · 17:15 Std · Economy · Buchung MK9T66 · Gepäck: 23 kg + 5 kg</span></div><a class="flight-no" href="https://www.flightstats.com/v2/flight-tracker/CA/116" target="_blank" rel="noopener">CA116</a></div>
           </div>
-        </article>
-        <article class="panel map-panel">
-          <div class="panel-top"><h3 data-i18n="mapHead">Karte · gesamte Reise</h3></div>
-          <div class="map-chips" role="group">
-            <button class="map-chip active" data-mapday="all" type="button" data-i18n="chipAll">Alle</button>
-            <button class="map-chip" data-mapday="29.10." type="button">29.10.</button>
-            <button class="map-chip" data-mapday="30.10." type="button">30.10.</button>
-            <button class="map-chip" data-mapday="31.10." type="button">31.10.</button>
-            <button class="map-chip" data-mapday="1.11." type="button">1.11.</button>
-            <button class="map-chip" data-mapday="2.11." type="button">2.11.</button>
-            <button class="map-chip" data-mapday="3.11." type="button">3.11.</button>
-            <button class="map-chip" data-mapday="4.11." type="button">4.11.</button>
-            <button class="map-chip" data-mapday="5.11." type="button">5.11.</button>
-            <button class="map-chip" data-mapday="6.11." type="button">6.11.</button>
-            <button class="map-chip" data-mapday="7.11." type="button">7.11.</button>
-            <button class="map-chip" data-mapday="8.11." type="button">8.11.</button>
-            <button class="map-chip" data-mapday="9.11." type="button">9.11.</button>
-            <button class="map-chip" data-mapday="10.11." type="button">10.11.</button>
-          </div>
-          <div id="map"></div>
-          <p class="map-note" data-i18n="mapNote">Positionen sind ungefähr · Karte benötigt Internet.</p>
         </article>
       </div>
     </section>
