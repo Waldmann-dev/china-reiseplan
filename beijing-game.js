@@ -36,7 +36,7 @@ var MAT = {
 };
 function box(w,h,d,mat){ var m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat); m.position.y = h/2; return m; }
 function cyl(rt,rb,h,mat,seg){ var m = new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg||12), mat); m.position.y = h/2; return m; }
-function at(mesh,x,y,z){ mesh.position.x=x; mesh.position.y=y; mesh.position.z=z; return mesh; }
+function at(mesh,x,y,z){ mesh.position.x=x; mesh.position.z=z; return mesh; } /* y bleibt wie von box()/cyl() gesetzt */
 /* Chinesisches Dach (stilisiert): Traufe + Pyramide + First */
 function hipRoof(w,d,h,mat,matD){
   var g = new THREE.Group();
@@ -472,5 +472,6 @@ function loop(){
       if (n===LM.length) setTimeout(function(){ toast('🎉 Alle 8 Stationen! Gute Reise nach Peking!'); }, 2800);
     }
   }
+  renderer.render(scene, camera);
 }
 })();
