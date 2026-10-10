@@ -405,30 +405,6 @@
       *, *::before, *::after { animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; }
     }
   
-    /* Beijing 3D Spiel */
-    #game-wrap { position: relative; width: 100%; border-radius: var(--radius-lg); overflow: hidden; border: 2px solid var(--jade); box-shadow: var(--shadow); background: #aed6e8; }
-    #game-canvas { display: block; width: 100%; height: 68vh; min-height: 430px; touch-action: none; }
-    #game-start { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: rgba(14, 26, 36, .9); z-index: 10; text-align: center; padding: 26px; color: #fff; }
-    #game-start h2 { font-size: 30px; margin: 0; }
-    #game-start p { max-width: 580px; line-height: 1.65; color: #cfe0f0; margin: 0; }
-    #game-start .ctrl { font-size: 14px; color: #9fb6cc; }
-    #btn-start { font-size: 19px; padding: 14px 40px; border-radius: 999px; border: none; background: var(--gold); color: #fff; font-weight: 800; cursor: pointer; }
-    #btn-start:hover { filter: brightness(1.1); }
-    #hud { position: absolute; inset: 0; pointer-events: none; z-index: 5; display: none; }
-    #hud.on { display: block; }
-    #checklist { position: absolute; top: 10px; right: 10px; background: rgba(14, 26, 36, .8); border: 1px solid var(--jade); border-radius: 12px; padding: 10px 12px; font-size: 13px; line-height: 1.9; pointer-events: auto; max-width: 230px; color: #fff; }
-    #checklist b { display: block; margin-bottom: 4px; font-size: 13px; color: #ffd75e; }
-    #checklist ul { margin: 0; padding: 0; }
-    #checklist li { list-style: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #checklist li.done { color: #7fe08a; }
-    #toast { position: absolute; left: 50%; bottom: 88px; transform: translateX(-50%); background: rgba(20, 40, 20, .92); border: 1px solid #7fe08a; color: #d8ffd8; padding: 10px 22px; border-radius: 999px; font-size: 15px; opacity: 0; transition: opacity .3s; white-space: nowrap; }
-    #toast.show { opacity: 1; }
-    #joy-base { position: absolute; left: 26px; bottom: 26px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,.12); border: 2px solid rgba(255,255,255,.35); display: none; pointer-events: none; }
-    #joy-knob { position: absolute; left: 50%; top: 50%; width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,.55); transform: translate(-50%,-50%); }
-    #touch-hint { position: absolute; left: 50%; bottom: 110px; transform: translateX(-50%); background: rgba(14,26,36,.75); color: #ffd75e; padding: 10px 22px; border-radius: 999px; font-size: 15px; z-index: 6; pointer-events: none; animation: touchPulse 1.6s ease-in-out infinite; white-space: nowrap; }
-    @keyframes touchPulse { 0%,100% { transform: translateX(-50%) scale(1); opacity: .95; } 50% { transform: translateX(-50%) scale(1.06); opacity: 1; } }
-    #hint { position: absolute; left: 12px; bottom: 12px; font-size: 12px; color: rgba(255,255,255,.8); background: rgba(14,26,36,.6); padding: 6px 10px; border-radius: 8px; }
-    @media (max-width: 640px) { #checklist { font-size: 11px; max-width: 172px; } #hint { display: none; } }
 
     </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -466,7 +442,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
     </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
-      <a href="#tage" data-i18n="navDays">Tage</a><a href="#reise" data-i18n="navFlights">Flüge & Zug</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#hotels" data-i18n="navHotels">Hotels</a><a href="#spiel3d" data-i18n="nav3d">3D-Spiel</a>
+      <a href="#tage" data-i18n="navDays">Tage</a><a href="#reise" data-i18n="navFlights">Flüge & Zug</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#hotels" data-i18n="navHotels">Hotels</a>
     </nav>
 
     
@@ -760,24 +736,6 @@
         </div>
     </section>
 
-    <section id="spiel3d">
-      <div class="section-head"><div><span class="section-num">09</span><h2 data-i18n="sec9h">Peking in 3D</h2><p data-i18n="sec9sub">Deine 8 Stationen als begehbares Miniatur-Peking – mit kleiner Figur zum Durchlaufen.</p></div></div>
-      <div id="game-wrap">
-        <canvas id="game-canvas"></canvas>
-        <div id="game-start">
-          <h2 data-i18n="gameTitle">🏯 Mini-Peking in 3D</h2>
-          <p data-i18n="gameDesc">Laufe mit deiner Figur durch alle 8 Stationen deiner Peking-Reise: Verbotene Stadt, Jingshan-Park, Große Mauer, Lama-Tempel, Hutongs, Himmelstempel, Sommerpalast und Qianmen. Sammle alle Stationen ein!</p>
-          <p class="ctrl" data-i18n="gameCtrl">🖥️ WASD / Pfeiltasten zum Laufen &nbsp;·&nbsp; 📱 Joystick links unten (Touch)</p>
-          <button id="btn-start" data-i18n="gameStart">🕹️ 3D-Tour starten</button>
-        </div>
-        <div id="hud">
-          <div id="checklist"><b data-i18n="gameStations">Stationen · Stations</b><ul id="cl-list"></ul></div>
-          <div id="toast"></div>
-          <div id="joy-base"><div id="joy-knob"></div></div>
-          <div id="hint" data-i18n="gameHint">WASD / ←↑↓→ laufen · walk</div>
-        </div>
-      </div>
-    </section>
 
     <footer class="footer"><span><b data-i18n="footerDate">Planungsstand 06.10.2026</b></span><span data-i18n="footerNote">Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
@@ -1011,15 +969,6 @@
         footerDate: `Planungsstand 06.10.2026`,
         footerNote: `Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.`,
         progressAria: (d, n) => `${d} von ${n} Punkten erledigt}`,
-        nav3d: `3D-Spiel`,
-        sec9h: `Peking in 3D`,
-        sec9sub: `Deine 8 Stationen als begehbares Miniatur-Peking – mit kleiner Figur zum Durchlaufen.`,
-        gameTitle: `🏯 Mini-Peking in 3D`,
-        gameDesc: `Laufe mit deiner Figur durch alle 8 Stationen deiner Peking-Reise: Verbotene Stadt, Jingshan-Park, Große Mauer, Lama-Tempel, Hutongs, Himmelstempel, Sommerpalast und Qianmen. Sammle alle Stationen ein!`,
-        gameCtrl: `🖥️ WASD / Pfeiltasten zum Laufen &nbsp;·&nbsp; 📱 Joystick links unten (Touch)`,
-        gameStart: `🕹️ 3D-Tour starten`,
-        gameStations: `Stationen · Stations`,
-        gameHint: `WASD / ←↑↓→ laufen · walk`,
       },
       en: {
         docTitle: `China Travel Plan · Beijing, Shenzhen & Hong Kong`,
@@ -1248,15 +1197,6 @@
         footerDate: `Last updated: Oct 6, 2026`,
         footerNote: `Recheck prices, flight times, entry rules and availability before departure.`,
         progressAria: (d, n) => `${d} of ${n} items done}`,
-        nav3d: `3D Game`,
-        sec9h: `Beijing in 3D`,
-        sec9sub: `Your 8 stations as a walkable miniature Beijing – with a little character to walk through.`,
-        gameTitle: `🏯 Mini Beijing in 3D`,
-        gameDesc: `Walk your character through all 8 stations of your Beijing trip: Forbidden City, Jingshan Park, Great Wall, Lama Temple, hutongs, Temple of Heaven, Summer Palace and Qianmen. Collect all stations!`,
-        gameCtrl: `🖥️ WASD / arrow keys to walk &nbsp;·&nbsp; 📱 joystick bottom-left (touch)`,
-        gameStart: `🕹️ Start 3D tour`,
-        gameStations: `Stationen · Stations`,
-        gameHint: `WASD / ←↑↓→ walk · laufen`,
       }
     };
 
@@ -1567,7 +1507,5 @@
       else if (!el.dataset.done) { el.dataset.done = '1'; initMiniMap(el); }
     });
   </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="beijing-game.js?v=3"></script>
 </body>
 </html>
