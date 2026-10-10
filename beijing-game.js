@@ -345,6 +345,16 @@ function init(){
     li.textContent = '☐ ' + l.de; ul.appendChild(li);
   });
   bindInput(canvas);
+  if ('ontouchstart' in window) {
+    var th = document.createElement('div');
+    th.id = 'touch-hint';
+    th.textContent = '\U0001F446 Tippen & Ziehen zum Laufen';
+    document.getElementById('game-wrap').appendChild(th);
+    canvas.addEventListener('touchstart', function h(){
+      th.style.display='none';
+      canvas.removeEventListener('touchstart', h);
+    });
+  }
   resize();
   window.addEventListener('resize', resize);
   clock = new THREE.Clock();
