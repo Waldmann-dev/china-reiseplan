@@ -406,6 +406,14 @@
     }
   
 
+    
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .video-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow); }
+    .video-card h3 { margin: 0 0 12px; font-size: 18px; }
+    .video-card video { width: 100%; border-radius: var(--radius-sm); background: #000; }
+    .video-card p { color: var(--muted); font-size: 14px; margin: 10px 0 0; }
+    @media (max-width: 720px) { .video-grid { grid-template-columns: 1fr; } }
+
     </style>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
@@ -442,7 +450,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" data-i18n-aria="langToggleAria" aria-label="Switch language"><span class="lang-opt active" data-lang="en">EN</span> | <span class="lang-opt" data-lang="de">DE</span></button>
     </div>
     <nav class="quicknav" data-i18n-aria="ariaQuicknav" aria-label="Schnellnavigation">
-      <a href="#tage" data-i18n="navDays">Tage</a><a href="#reise" data-i18n="navFlights">Flüge & Zug</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#hotels" data-i18n="navHotels">Hotels</a>
+      <a href="#tage" data-i18n="navDays">Tage</a><a href="#reise" data-i18n="navFlights">Flüge & Zug</a><a href="#budget" data-i18n="navBudget">Budget</a><a href="#tipps" data-i18n="navTips">Tipps</a><a href="#checkliste" data-i18n="navTodos">To-dos</a><a href="#packliste" data-i18n="navPack">Packliste</a><a href="#kochkurse" data-i18n="navCook">Kochkurse</a><a href="#hotels" data-i18n="navHotels">Hotels</a><a href="#safety" data-i18n="navSafety">⚠️ Safety</a>
     </nav>
 
     
@@ -737,6 +745,28 @@
     </section>
 
 
+    <section id="safety">
+      <div class="section-head"><div><span class="section-num">09</span><h2 data-i18n="sec9h">⚠️ Safety-Briefing</h2><p data-i18n="sec9sub">Die häufigsten Betrugsmaschen in Peking, Shenzhen & Hongkong – als Video, auf Deutsch und Englisch.</p></div></div>
+      <div class="video-grid">
+        <div class="video-card">
+          <h3 data-i18n="vidDeT">🎬 Betrugsmaschen – Deutsch</h3>
+          <video controls preload="metadata" poster="">
+            <source src="safety-scams-de.mp4" type="video/mp4">
+            <span data-i18n="vidNoSupport">Dein Browser unterstützt kein Video.</span>
+          </video>
+          <p data-i18n="vidDeD">3 Minuten: Teehaus-Abzocke, Taxi-Tricks, Tourenfallen, Falschgeld, Shenzhen- & Hongkong-Maschen.</p>
+        </div>
+        <div class="video-card">
+          <h3 data-i18n="vidEnT">🎬 Tourist Scams – English</h3>
+          <video controls preload="metadata" poster="">
+            <source src="safety-scams-en.mp4" type="video/mp4">
+            <span data-i18n="vidNoSupport">Dein Browser unterstützt kein Video.</span>
+          </video>
+          <p data-i18n="vidEnD">3 minutes: tea house scam, taxi tricks, tour traps, counterfeit money, Shenzhen & Hong Kong scams.</p>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer"><span><b data-i18n="footerDate">Planungsstand 06.10.2026</b></span><span data-i18n="footerNote">Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.</span></footer>
   </main>
 
@@ -971,6 +1001,14 @@
         footerDate: `Planungsstand 06.10.2026`,
         footerNote: `Preise, Flugzeiten, Einreiseregeln und Verfügbarkeiten vor Abreise erneut prüfen.`,
         progressAria: (d, n) => `${d} von ${n} Punkten erledigt}`,
+        navSafety: `⚠️ Safety`,
+        sec9h: `⚠️ Safety-Briefing`,
+        sec9sub: `Die häufigsten Betrugsmaschen in Peking, Shenzhen & Hongkong – als Video, auf Deutsch und Englisch.`,
+        vidDeT: `🎬 Betrugsmaschen – Deutsch`,
+        vidDeD: `3 Minuten: Teehaus-Abzocke, Taxi-Tricks, Tourenfallen, Falschgeld, Shenzhen- & Hongkong-Maschen.`,
+        vidEnT: `🎬 Tourist Scams – English`,
+        vidEnD: `3 minutes: tea house scam, taxi tricks, tour traps, counterfeit money, Shenzhen & Hong Kong scams.`,
+        vidNoSupport: `Dein Browser unterstützt kein Video.`,
       },
       en: {
         docTitle: `China Travel Plan · Beijing, Shenzhen & Hong Kong`,
@@ -1201,8 +1239,16 @@
         footerDate: `Last updated: Oct 6, 2026`,
         footerNote: `Recheck prices, flight times, entry rules and availability before departure.`,
         progressAria: (d, n) => `${d} of ${n} items done}`,
-      }
-    };
+        navSafety: `⚠️ Safety`,
+        sec9h: `⚠️ Safety Briefing`,
+        sec9sub: `The most common scams in Beijing, Shenzhen & Hong Kong – as video, in German and English.`,
+        vidDeT: `🎬 Betrugsmaschen – Deutsch`,
+        vidDeD: `3 Minuten: Teehaus-Abzocke, Taxi-Tricks, Tourenfallen, Falschgeld, Shenzhen- & Hongkong-Maschen.`,
+        vidEnT: `🎬 Tourist Scams – English`,
+        vidEnD: `3 minutes: tea house scam, taxi tricks, tour traps, counterfeit money, Shenzhen & Hong Kong scams.`,
+        vidNoSupport: `Your browser does not support video.`,
+
+      }    };
 
     let currentLang = 'en';
     const langToggle = document.getElementById('lang-toggle');
